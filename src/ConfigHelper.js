@@ -3,7 +3,7 @@ function ConfigHelper(services) {
   const cacheHelper = services.CacheHelper;
   const utils = services.Utils;
   
-  const METADATA_ENDPOINT = "https://www3.gobiernodecanarias.org/istac/api/cmetadata/v1.0/properties.json";
+  const METADATA_ENDPOINT = "https://datos.canarias.es/api/estadisticas/api/cmetadata/v1.0/properties.json";
   const OPERATIONS_KEY = "metamac.statistical_operations.rest.external";
   const OPERATIONS_END_OF_ENDPOINT = "/v1.0/operations.json?query=STATUS%20EQ%20%22PRODUCTION%22&limit=1000&orderBy=ID%20ASC";
   const CUBES_KEY = "metamac.statistical_resources.rest.external";
@@ -184,7 +184,7 @@ function ConfigHelper(services) {
         .setId("inputUrl")
         .setName("URL")
         .setHelpText(
-          "Esta URL debe ser una petición de la API. Por ejemplo: https://www3.gobiernodecanarias.org/istac/api/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001"
+          "Esta URL debe ser una petición de la API. Por ejemplo: https://datos.canarias.es/api/estadisticas/api/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001"
         )
         .setPlaceholder("");
   

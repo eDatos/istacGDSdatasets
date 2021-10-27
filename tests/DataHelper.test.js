@@ -47,7 +47,7 @@ test("_processData: without languages nor decode", () => {
   var configParams = {
     inputType: "variableSelector",
     cube:
-      "https://www3.gobiernodecanarias.org/istac/api/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/001.004"
+      "https://datos.canarias.es/api/estadisticas/api/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/001.004"
   };
   
   var expectedResult = [{ "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2019-M09"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2019-M08"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2019-M07"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2019-M06"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2019-M05"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2019-M04"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2019-M03"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2019-M02"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2019-M01"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2018"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2018-M12"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2018-M11"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2018-M10"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2018-M09"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2018-M08"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2018-M07"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2018-M06"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2018-M05"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2018-M04"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2018-M03"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2018-M02"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2018-M01"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2017"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2017-M12"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2017-M11"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2017-M10"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2017-M09"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2017-M08"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2017-M07"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2017-M06"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2017-M05"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2017-M04"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2017-M03"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2017-M02"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2017-M01"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2016"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2016-M12"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2016-M11"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2016-M10"] }];
@@ -66,7 +66,7 @@ test("_processData: with input url", () => {
   var configParams = {
     inputType: "inputUrlSelector",
     inputUrl:
-      "https://www3.gobiernodecanarias.org/istac/api/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001"
+      "https://datos.canarias.es/api/estadisticas/api/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001"
   };
 
   var expectedResult = [{ "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2019-M09"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2019-M08"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2019-M07"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2019-M06"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2019-M05"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2019-M04"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2019-M03"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2019-M02"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2019-M01"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2018"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2018-M12"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2018-M11"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2018-M10"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2018-M09"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2018-M08"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2018-M07"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2018-M06"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2018-M05"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2018-M04"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2018-M03"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2018-M02"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2018-M01"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2017"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2017-M12"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2017-M11"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2017-M10"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2017-M09"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2017-M08"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2017-M07"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2017-M06"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2017-M05"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2017-M04"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2017-M03"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2017-M02"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2017-M01"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2016"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2016-M12"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2016-M11"] }, { "values": ["", "VENTA_CEMENTO__TASA_VARIACION_ANUAL", "ES704", "2016-M10"] }];
@@ -84,7 +84,7 @@ test("_processData: with recodeDates", () => {
   var configParams = {
     inputType: "variableSelector",
     cube:
-      "https://www3.gobiernodecanarias.org/istac/api/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/001.004",
+      "https://datos.canarias.es/api/estadisticas/api/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/001.004",
     recodeDates: "true"
   };
 
@@ -104,7 +104,7 @@ test("_processData: with recodeDates and showMeasureColumns", () => {
   var configParams = {
     inputType: "variableSelector",
     cube:
-      "https://www3.gobiernodecanarias.org/istac/api/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/001.004",
+      "https://datos.canarias.es/api/estadisticas/api/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/001.004",
     recodeDates: "true",
     showMeasureColumns: "true"
   };
@@ -131,7 +131,7 @@ test("_processData: with recodeDates, showMeasureColumns and showLabels", () => 
   var configParams = {
     inputType: "variableSelector",
     cube:
-      "https://www3.gobiernodecanarias.org/istac/api/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/001.004",
+      "https://datos.canarias.es/api/estadisticas/api/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/001.004",
     recodeDates: "true",
     showMeasureColumns: "true",
     showLabels: "true"
@@ -162,7 +162,7 @@ test("_processData: with recodeDates, showMeasureColumns, showLabels and allLang
   var configParams = {
     inputType: "variableSelector",
     cube:
-      "https://www3.gobiernodecanarias.org/istac/api/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/001.004",
+      "https://datos.canarias.es/api/estadisticas/api/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/001.004",
     recodeDates: "true",
     showMeasureColumns: "true",
     showLabels: "true",
