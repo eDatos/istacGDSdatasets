@@ -30,7 +30,7 @@ test("getStatisticsOperations", () => {
       },
       selfLink: {
         href:
-          "https://datos.canarias.es/api/estadisticas/api/operations/v1.0/operations/C00016A",
+          "https://datos.canarias.es/api/estadisticas/operations/v1.0/operations/C00016A",
         kind: "statisticalOperations#operation"
       },
       urn:
@@ -50,7 +50,7 @@ test("getStatisticsOperations", () => {
       },
       selfLink: {
         href:
-          "https://datos.canarias.es/api/estadisticas/api/operations/v1.0/operations/C00036A",
+          "https://datos.canarias.es/api/estadisticas/operations/v1.0/operations/C00036A",
         kind: "statisticalOperations#operation"
       },
       urn:
@@ -66,7 +66,7 @@ test("getStatisticsOperations", () => {
       },
       selfLink: {
         href:
-          "https://datos.canarias.es/api/estadisticas/api/operations/v1.0/operations/C00010A",
+          "https://datos.canarias.es/api/estadisticas/operations/v1.0/operations/C00010A",
         kind: "statisticalOperations#operation"
       },
       urn:
@@ -93,7 +93,7 @@ test("getCubes", () => {
       },
       selfLink: {
         href:
-          "https://datos.canarias.es/api/estadisticas/api/statistical-resources/v1.0/datasets/ISTAC/E30151A_000001/001.002",
+          "https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets/ISTAC/E30151A_000001/001.002",
         kind: "statisticalResources#dataset"
       },
       urn:

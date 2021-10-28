@@ -24,7 +24,7 @@ test("getColumns: without languages nor decode", () => {
   var configParams = {
     inputType: "variableSelector",
     cube:
-      "https://datos.canarias.es/api/estadisticas/api/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/001.004"
+      "https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/001.004"
   };
   var expectedResult = [{ "columnRole": "metric", "dataType": "float", "id": "OBSERVATION", "name": "Ventas de cemento al por mayor por islas de Canarias y periodos" }, { "columnRole": "dimension", "dataType": "string", "id": "MEDIDAS", "name": "Indicador" }, { "columnRole": "dimension", "dataType": "string", "id": "TERRITORIO", "name": "Territorio" }, { "columnRole": "dimension", "dataType": "string", "id": "TIME_PERIOD", "name": "Periodo" }];
 
@@ -35,7 +35,7 @@ test("getColumns: with input url", () => {
   var configParams = {
     inputType: "inputUrlSelector",
     inputUrl:
-      "https://datos.canarias.es/api/estadisticas/api/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001"
+      "https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001"
   };
   var expectedResult = [{ "columnRole": "metric", "dataType": "float", "id": "OBSERVATION", "name": "Ventas de cemento al por mayor por islas de Canarias y periodos" }, { "columnRole": "dimension", "dataType": "string", "id": "MEDIDAS", "name": "Indicador" }, { "columnRole": "dimension", "dataType": "string", "id": "TERRITORIO", "name": "Territorio" }, { "columnRole": "dimension", "dataType": "string", "id": "TIME_PERIOD", "name": "Periodo" }];
 
@@ -46,7 +46,7 @@ test("getColumns: with recodeDates", () => {
   var configParams = {
     inputType: "variableSelector",
     cube:
-      "https://datos.canarias.es/api/estadisticas/api/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/001.004",
+      "https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/001.004",
     recodeDates: "true"
   };
   var expectedResult = [{ "columnRole": "metric", "dataType": "float", "id": "OBSERVATION", "name": "Ventas de cemento al por mayor por islas de Canarias y periodos" }, { "columnRole": "dimension", "dataType": "string", "id": "MEDIDAS", "name": "Indicador" }, { "columnRole": "dimension", "dataType": "string", "id": "TERRITORIO", "name": "Territorio" }, { "columnRole": "dimension", "dataType": "string", "id": "TIME_PERIOD", "name": "Periodo" }, { "columnRole": "dimension", "dataType": "date", "id": "Fecha", "name": "Fecha" }];
@@ -58,7 +58,7 @@ test("getColumns: with recodeDates and showMeasureColumns", () => {
   var configParams = {
     inputType: "variableSelector",
     cube:
-      "https://datos.canarias.es/api/estadisticas/api/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/001.004",
+      "https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/001.004",
     recodeDates: "true",
     showMeasureColumns: "true"
   };
@@ -72,7 +72,7 @@ test("getColumns: with recodeDates, showMeasureColumns and showLabels", () => {
   var configParams = {
     inputType: "variableSelector",
     cube:
-      "https://datos.canarias.es/api/estadisticas/api/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/001.004",
+      "https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/001.004",
     recodeDates: "true",
     showMeasureColumns: "true",
     showLabels: "true"
@@ -86,7 +86,7 @@ test("getColumns: with recodeDates, showMeasureColumns, showLabels and allLangua
   var configParams = {
     inputType: "variableSelector",
     cube:
-      "https://datos.canarias.es/api/estadisticas/api/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/001.004",
+      "https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/001.004",
     recodeDates: "true",
     showMeasureColumns: "true",
     showLabels: "true",
