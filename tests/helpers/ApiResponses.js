@@ -9,7 +9,7 @@ const statisticsOperationsResponse = {
       selfLink: {
         kind: "statisticalOperations#operation",
         href:
-          "https://www3.gobiernodecanarias.org/istac/api/operations/v1.0/operations/C00010A"
+          "https://datos.canarias.es/api/estadisticas/operations/v1.0/operations/C00010A"
       },
       name: {
         text: [
@@ -28,7 +28,7 @@ const statisticsOperationsResponse = {
       selfLink: {
         kind: "statisticalOperations#operation",
         href:
-          "https://www3.gobiernodecanarias.org/istac/api/operations/v1.0/operations/C00016A"
+          "https://datos.canarias.es/api/estadisticas/operations/v1.0/operations/C00016A"
       },
       name: {
         text: [
@@ -47,7 +47,7 @@ const statisticsOperationsResponse = {
       selfLink: {
         kind: "statisticalOperations#operation",
         href:
-          "https://www3.gobiernodecanarias.org/istac/api/operations/v1.0/operations/C00036A"
+          "https://datos.canarias.es/api/estadisticas/operations/v1.0/operations/C00036A"
       },
       name: {
         text: [
@@ -66,7 +66,7 @@ const statisticsOperationsResponse = {
   limit: 1000,
   offset: 0,
   selfLink:
-    "https://www3.gobiernodecanarias.org/istac/api/operations/v1.0/operations?orderBy=ID ASC&limit=1000&offset=0"
+    "https://datos.canarias.es/api/estadisticas/operations/v1.0/operations?orderBy=ID ASC&limit=1000&offset=0"
 };
 
 const cubesResponse = {
@@ -78,7 +78,7 @@ const cubesResponse = {
       selfLink: {
         kind: "statisticalResources#dataset",
         href:
-          "https://www3.gobiernodecanarias.org/istac/api/statistical-resources/v1.0/datasets/ISTAC/E30151A_000001/001.002"
+          "https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets/ISTAC/E30151A_000001/001.002"
       },
       name: {
         text: [
@@ -98,7 +98,7 @@ const cubesResponse = {
       selfLink: {
         kind: "statisticalResources#dataset",
         href:
-          "https://www3.gobiernodecanarias.org/istac/api/statistical-resources/v1.0/datasets/ISTAC/E30151A_000001/001.000"
+          "https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets/ISTAC/E30151A_000001/001.000"
       },
       name: {
         text: [
@@ -118,7 +118,7 @@ const cubesResponse = {
       selfLink: {
         kind: "statisticalResources#dataset",
         href:
-          "https://www3.gobiernodecanarias.org/istac/api/statistical-resources/v1.0/datasets/ISTAC/E30151A_000001/001.001"
+          "https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets/ISTAC/E30151A_000001/001.001"
       },
       name: {
         text: [
@@ -137,7 +137,7 @@ const cubesResponse = {
   limit: 25,
   offset: 0,
   selfLink:
-    'https://www3.gobiernodecanarias.org/istac/api/statistical-resources/v1.0/datasets?query=STATISTICAL_OPERATION_URN EQ "urn:siemac:org.siemac.metamac.infomodel.statisticaloperations.Operation&E30151A"&limit=25&offset=0'
+    'https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets?query=STATISTICAL_OPERATION_URN EQ "urn:siemac:org.siemac.metamac.infomodel.statisticaloperations.Operation&E30151A"&limit=25&offset=0'
 };
 
 const dataResponse = {
@@ -145,11 +145,11 @@ const dataResponse = {
     "urn": "urn:siemac:org.siemac.metamac.infomodel.statisticalresources.Dataset=ISTAC:C00016A_000001(1.5)",
     "selfLink": {
         "kind": "statisticalResources#dataset",
-        "href": "https://www3.gobiernodecanarias.org/istac/api/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/1.5"
+        "href": "https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/1.5"
     },
     "parentLink": {
         "kind": "statisticalResources#datasets",
-        "href": "https://www3.gobiernodecanarias.org/istac/api/statistical-resources/v1.0/datasets"
+        "href": "https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets"
     },
     "name": {
         "text": [
@@ -180,7 +180,7 @@ const dataResponse = {
             "urn": "urn:siemac:org.siemac.metamac.infomodel.statisticalresources.Dataset=ISTAC:C00016A_000001(001.004)",
             "selfLink": {
                 "kind": "statisticalResources#dataset",
-                "href": "https://www3.gobiernodecanarias.org/istac/api/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/001.004"
+                "href": "https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/001.004"
             },
             "name": {
                 "text": [
@@ -199,7 +199,7 @@ const dataResponse = {
                     "urn": "urn:siemac:org.siemac.metamac.infomodel.statisticalresources.Query=ISTAC:C00016A_000001",
                     "selfLink": {
                         "kind": "statisticalResources#query",
-                        "href": "https://www3.gobiernodecanarias.org/istac/api/statistical-resources/v1.0/queries/ISTAC/C00016A_000001"
+                        "href": "https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/queries/ISTAC/C00016A_000001"
                     },
                     "name": {
                         "text": [
@@ -221,7 +221,7 @@ const dataResponse = {
                     "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_AREA_ES(02.000).ES70",
                     "selfLink": {
                         "kind": "structuralResources#code",
-                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES70"
+                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES70"
                     },
                     "name": {
                         "text": [
@@ -242,7 +242,7 @@ const dataResponse = {
                     "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_AREA_ES(02.000).ES704",
                     "selfLink": {
                         "kind": "structuralResources#code",
-                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES704"
+                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES704"
                     },
                     "name": {
                         "text": [
@@ -263,7 +263,7 @@ const dataResponse = {
                     "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_AREA_ES(02.000).ES705",
                     "selfLink": {
                         "kind": "structuralResources#code",
-                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES705"
+                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES705"
                     },
                     "name": {
                         "text": [
@@ -284,7 +284,7 @@ const dataResponse = {
                     "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_AREA_ES(02.000).ES708",
                     "selfLink": {
                         "kind": "structuralResources#code",
-                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES708"
+                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES708"
                     },
                     "name": {
                         "text": [
@@ -305,7 +305,7 @@ const dataResponse = {
                     "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_AREA_ES(02.000).ES703",
                     "selfLink": {
                         "kind": "structuralResources#code",
-                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES703"
+                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES703"
                     },
                     "name": {
                         "text": [
@@ -326,7 +326,7 @@ const dataResponse = {
                     "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_AREA_ES(02.000).ES706",
                     "selfLink": {
                         "kind": "structuralResources#code",
-                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES706"
+                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES706"
                     },
                     "name": {
                         "text": [
@@ -347,7 +347,7 @@ const dataResponse = {
                     "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_AREA_ES(02.000).ES707",
                     "selfLink": {
                         "kind": "structuralResources#code",
-                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES707"
+                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES707"
                     },
                     "name": {
                         "text": [
@@ -368,7 +368,7 @@ const dataResponse = {
                     "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_AREA_ES(02.000).ES709",
                     "selfLink": {
                         "kind": "structuralResources#code",
-                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES709"
+                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES709"
                     },
                     "name": {
                         "text": [
@@ -1928,7 +1928,7 @@ const dataResponse = {
                     "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ISTAC:CSM_C00016A(01.000).VENTA_CEMENTO",
                     "selfLink": {
                         "kind": "structuralResources#concept",
-                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO"
+                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO"
                     },
                     "name": {
                         "text": [
@@ -1945,7 +1945,7 @@ const dataResponse = {
                     "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ISTAC:CSM_C00016A(01.000).VENTA_CEMENTO_ACUMULADA",
                     "selfLink": {
                         "kind": "structuralResources#concept",
-                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO_ACUMULADA"
+                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO_ACUMULADA"
                     },
                     "name": {
                         "text": [
@@ -1962,7 +1962,7 @@ const dataResponse = {
                     "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ISTAC:CSM_C00016A(01.000).VENTA_CEMENTO_ACUMULADA__TASA_VARIACION_ANUAL",
                     "selfLink": {
                         "kind": "structuralResources#concept",
-                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO_ACUMULADA__TASA_VARIACION_ANUAL"
+                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO_ACUMULADA__TASA_VARIACION_ANUAL"
                     },
                     "name": {
                         "text": [
@@ -1979,7 +1979,7 @@ const dataResponse = {
                     "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ISTAC:CSM_C00016A(01.000).VENTA_CEMENTO_ACUMULADA__VARIACION_ANUAL",
                     "selfLink": {
                         "kind": "structuralResources#concept",
-                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO_ACUMULADA__VARIACION_ANUAL"
+                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO_ACUMULADA__VARIACION_ANUAL"
                     },
                     "name": {
                         "text": [
@@ -1996,7 +1996,7 @@ const dataResponse = {
                     "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ISTAC:CSM_C00016A(01.000).VENTA_CEMENTO__TASA_VARIACION_ANUAL",
                     "selfLink": {
                         "kind": "structuralResources#concept",
-                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO__TASA_VARIACION_ANUAL"
+                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO__TASA_VARIACION_ANUAL"
                     },
                     "name": {
                         "text": [
@@ -2013,7 +2013,7 @@ const dataResponse = {
                     "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ISTAC:CSM_C00016A(01.000).VENTA_CEMENTO__TASA_VARIACION_INTERPERIODICA",
                     "selfLink": {
                         "kind": "structuralResources#concept",
-                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO__TASA_VARIACION_INTERPERIODICA"
+                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO__TASA_VARIACION_INTERPERIODICA"
                     },
                     "name": {
                         "text": [
@@ -2030,7 +2030,7 @@ const dataResponse = {
                     "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ISTAC:CSM_C00016A(01.000).VENTA_CEMENTO__VARIACION_ANUAL",
                     "selfLink": {
                         "kind": "structuralResources#concept",
-                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO__VARIACION_ANUAL"
+                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO__VARIACION_ANUAL"
                     },
                     "name": {
                         "text": [
@@ -2047,7 +2047,7 @@ const dataResponse = {
                     "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ISTAC:CSM_C00016A(01.000).VENTA_CEMENTO__VARIACION_INTERPERIODICA",
                     "selfLink": {
                         "kind": "structuralResources#concept",
-                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO__VARIACION_INTERPERIODICA"
+                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO__VARIACION_INTERPERIODICA"
                     },
                     "name": {
                         "text": [
@@ -2069,7 +2069,7 @@ const dataResponse = {
                     "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_GRANULARIDADES_GEOGRAFICAS(01.002).REGIONS",
                     "selfLink": {
                         "kind": "structuralResources#code",
-                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/codelists/ISTAC/CL_GRANULARIDADES_GEOGRAFICAS/01.002/codes/REGIONS"
+                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/codelists/ISTAC/CL_GRANULARIDADES_GEOGRAFICAS/01.002/codes/REGIONS"
                     },
                     "name": {
                         "text": [
@@ -2090,7 +2090,7 @@ const dataResponse = {
                     "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_GRANULARIDADES_GEOGRAFICAS(01.002).ISLANDS",
                     "selfLink": {
                         "kind": "structuralResources#code",
-                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/codelists/ISTAC/CL_GRANULARIDADES_GEOGRAFICAS/01.002/codes/ISLANDS"
+                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/codelists/ISTAC/CL_GRANULARIDADES_GEOGRAFICAS/01.002/codes/ISLANDS"
                     },
                     "name": {
                         "text": [
@@ -2116,7 +2116,7 @@ const dataResponse = {
                     "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_FREQ(01.001).M",
                     "selfLink": {
                         "kind": "structuralResources#code",
-                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/codelists/ISTAC/CL_FREQ/01.001/codes/M"
+                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/codelists/ISTAC/CL_FREQ/01.001/codes/M"
                     },
                     "name": {
                         "text": [
@@ -2137,7 +2137,7 @@ const dataResponse = {
                     "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_FREQ(01.001).A",
                     "selfLink": {
                         "kind": "structuralResources#code",
-                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/codelists/ISTAC/CL_FREQ/01.001/codes/A"
+                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/codelists/ISTAC/CL_FREQ/01.001/codes/A"
                     },
                     "name": {
                         "text": [
@@ -2178,7 +2178,7 @@ const dataResponse = {
             "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=ISTAC:DSD_C00016A_00001(01.000)",
             "selfLink": {
                 "kind": "structuralResources#dataStructure",
-                "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/datastructures/ISTAC/DSD_C00016A_00001/01.000"
+                "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/datastructures/ISTAC/DSD_C00016A_00001/01.000"
             },
             "name": {
                 "text": [
@@ -2217,7 +2217,7 @@ const dataResponse = {
                                         "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_UNIDADES_MEDIDA(01.000).T",
                                         "selfLink": {
                                             "kind": "structuralResources#code",
-                                            "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/codelists/ISTAC/CL_UNIDADES_MEDIDA/01.000/codes/T"
+                                            "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_UNIDADES_MEDIDA/01.000/codes/T"
                                         },
                                         "name": {
                                             "text": [
@@ -2238,7 +2238,7 @@ const dataResponse = {
                                 "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ISTAC:CSM_C00016A(01.000).VENTA_CEMENTO",
                                 "selfLink": {
                                     "kind": "structuralResources#concept",
-                                    "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO"
+                                    "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO"
                                 },
                                 "name": {
                                     "text": [
@@ -2258,7 +2258,7 @@ const dataResponse = {
                                         "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_UNIDADES_MEDIDA(01.000).T",
                                         "selfLink": {
                                             "kind": "structuralResources#code",
-                                            "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/codelists/ISTAC/CL_UNIDADES_MEDIDA/01.000/codes/T"
+                                            "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_UNIDADES_MEDIDA/01.000/codes/T"
                                         },
                                         "name": {
                                             "text": [
@@ -2279,7 +2279,7 @@ const dataResponse = {
                                 "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ISTAC:CSM_C00016A(01.000).VENTA_CEMENTO_ACUMULADA",
                                 "selfLink": {
                                     "kind": "structuralResources#concept",
-                                    "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO_ACUMULADA"
+                                    "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO_ACUMULADA"
                                 },
                                 "name": {
                                     "text": [
@@ -2299,7 +2299,7 @@ const dataResponse = {
                                         "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_UNIDADES_MEDIDA(01.000).PORCENTAJE",
                                         "selfLink": {
                                             "kind": "structuralResources#code",
-                                            "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/codelists/ISTAC/CL_UNIDADES_MEDIDA/01.000/codes/PORCENTAJE"
+                                            "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_UNIDADES_MEDIDA/01.000/codes/PORCENTAJE"
                                         },
                                         "name": {
                                             "text": [
@@ -2320,7 +2320,7 @@ const dataResponse = {
                                 "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ISTAC:CSM_C00016A(01.000).VENTA_CEMENTO_ACUMULADA__TASA_VARIACION_ANUAL",
                                 "selfLink": {
                                     "kind": "structuralResources#concept",
-                                    "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO_ACUMULADA__TASA_VARIACION_ANUAL"
+                                    "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO_ACUMULADA__TASA_VARIACION_ANUAL"
                                 },
                                 "name": {
                                     "text": [
@@ -2340,7 +2340,7 @@ const dataResponse = {
                                         "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_UNIDADES_MEDIDA(01.000).T",
                                         "selfLink": {
                                             "kind": "structuralResources#code",
-                                            "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/codelists/ISTAC/CL_UNIDADES_MEDIDA/01.000/codes/T"
+                                            "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_UNIDADES_MEDIDA/01.000/codes/T"
                                         },
                                         "name": {
                                             "text": [
@@ -2361,7 +2361,7 @@ const dataResponse = {
                                 "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ISTAC:CSM_C00016A(01.000).VENTA_CEMENTO_ACUMULADA__VARIACION_ANUAL",
                                 "selfLink": {
                                     "kind": "structuralResources#concept",
-                                    "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO_ACUMULADA__VARIACION_ANUAL"
+                                    "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO_ACUMULADA__VARIACION_ANUAL"
                                 },
                                 "name": {
                                     "text": [
@@ -2381,7 +2381,7 @@ const dataResponse = {
                                         "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_UNIDADES_MEDIDA(01.000).PORCENTAJE",
                                         "selfLink": {
                                             "kind": "structuralResources#code",
-                                            "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/codelists/ISTAC/CL_UNIDADES_MEDIDA/01.000/codes/PORCENTAJE"
+                                            "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_UNIDADES_MEDIDA/01.000/codes/PORCENTAJE"
                                         },
                                         "name": {
                                             "text": [
@@ -2402,7 +2402,7 @@ const dataResponse = {
                                 "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ISTAC:CSM_C00016A(01.000).VENTA_CEMENTO__TASA_VARIACION_ANUAL",
                                 "selfLink": {
                                     "kind": "structuralResources#concept",
-                                    "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO__TASA_VARIACION_ANUAL"
+                                    "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO__TASA_VARIACION_ANUAL"
                                 },
                                 "name": {
                                     "text": [
@@ -2422,7 +2422,7 @@ const dataResponse = {
                                         "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_UNIDADES_MEDIDA(01.000).PORCENTAJE",
                                         "selfLink": {
                                             "kind": "structuralResources#code",
-                                            "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/codelists/ISTAC/CL_UNIDADES_MEDIDA/01.000/codes/PORCENTAJE"
+                                            "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_UNIDADES_MEDIDA/01.000/codes/PORCENTAJE"
                                         },
                                         "name": {
                                             "text": [
@@ -2443,7 +2443,7 @@ const dataResponse = {
                                 "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ISTAC:CSM_C00016A(01.000).VENTA_CEMENTO__TASA_VARIACION_INTERPERIODICA",
                                 "selfLink": {
                                     "kind": "structuralResources#concept",
-                                    "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO__TASA_VARIACION_INTERPERIODICA"
+                                    "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO__TASA_VARIACION_INTERPERIODICA"
                                 },
                                 "name": {
                                     "text": [
@@ -2463,7 +2463,7 @@ const dataResponse = {
                                         "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_UNIDADES_MEDIDA(01.000).T",
                                         "selfLink": {
                                             "kind": "structuralResources#code",
-                                            "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/codelists/ISTAC/CL_UNIDADES_MEDIDA/01.000/codes/T"
+                                            "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_UNIDADES_MEDIDA/01.000/codes/T"
                                         },
                                         "name": {
                                             "text": [
@@ -2484,7 +2484,7 @@ const dataResponse = {
                                 "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ISTAC:CSM_C00016A(01.000).VENTA_CEMENTO__VARIACION_ANUAL",
                                 "selfLink": {
                                     "kind": "structuralResources#concept",
-                                    "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO__VARIACION_ANUAL"
+                                    "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO__VARIACION_ANUAL"
                                 },
                                 "name": {
                                     "text": [
@@ -2504,7 +2504,7 @@ const dataResponse = {
                                         "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_UNIDADES_MEDIDA(01.000).T",
                                         "selfLink": {
                                             "kind": "structuralResources#code",
-                                            "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/codelists/ISTAC/CL_UNIDADES_MEDIDA/01.000/codes/T"
+                                            "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_UNIDADES_MEDIDA/01.000/codes/T"
                                         },
                                         "name": {
                                             "text": [
@@ -2525,7 +2525,7 @@ const dataResponse = {
                                 "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ISTAC:CSM_C00016A(01.000).VENTA_CEMENTO__VARIACION_INTERPERIODICA",
                                 "selfLink": {
                                     "kind": "structuralResources#concept",
-                                    "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO__VARIACION_INTERPERIODICA"
+                                    "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/conceptschemes/ISTAC/CSM_C00016A/01.000/concepts/VENTA_CEMENTO__VARIACION_INTERPERIODICA"
                                 },
                                 "name": {
                                     "text": [
@@ -2564,7 +2564,7 @@ const dataResponse = {
                                     "urn": "urn:siemac:org.siemac.metamac.infomodel.structuralresources.VariableElement=VR_TERRITORIO.CCAA_CANARIAS",
                                     "selfLink": {
                                         "kind": "structuralResources#variableElement",
-                                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/variables/VR_TERRITORIO/variableelements/CCAA_CANARIAS"
+                                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/variables/VR_TERRITORIO/variableelements/CCAA_CANARIAS"
                                     },
                                     "name": {
                                         "text": [
@@ -2585,7 +2585,7 @@ const dataResponse = {
                                     "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_GRANULARIDADES_GEOGRAFICAS(01.000).REGIONS",
                                     "selfLink": {
                                         "kind": "structuralResources#code",
-                                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/codelists/ISTAC/CL_GRANULARIDADES_GEOGRAFICAS/01.000/codes/REGIONS"
+                                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_GRANULARIDADES_GEOGRAFICAS/01.000/codes/REGIONS"
                                     },
                                     "name": {
                                         "text": [
@@ -2606,7 +2606,7 @@ const dataResponse = {
                                 "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_AREA_ES(02.000).ES70",
                                 "selfLink": {
                                     "kind": "structuralResources#code",
-                                    "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES70"
+                                    "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES70"
                                 },
                                 "name": {
                                     "text": [
@@ -2629,7 +2629,7 @@ const dataResponse = {
                                     "urn": "urn:siemac:org.siemac.metamac.infomodel.structuralresources.VariableElement=VR_TERRITORIO.ISLA_FUERTEVENTURA",
                                     "selfLink": {
                                         "kind": "structuralResources#variableElement",
-                                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/variables/VR_TERRITORIO/variableelements/ISLA_FUERTEVENTURA"
+                                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/variables/VR_TERRITORIO/variableelements/ISLA_FUERTEVENTURA"
                                     },
                                     "name": {
                                         "text": [
@@ -2650,7 +2650,7 @@ const dataResponse = {
                                     "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_GRANULARIDADES_GEOGRAFICAS(01.000).ISLANDS",
                                     "selfLink": {
                                         "kind": "structuralResources#code",
-                                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/codelists/ISTAC/CL_GRANULARIDADES_GEOGRAFICAS/01.000/codes/ISLANDS"
+                                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_GRANULARIDADES_GEOGRAFICAS/01.000/codes/ISLANDS"
                                     },
                                     "name": {
                                         "text": [
@@ -2671,7 +2671,7 @@ const dataResponse = {
                                 "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_AREA_ES(02.000).ES704",
                                 "selfLink": {
                                     "kind": "structuralResources#code",
-                                    "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES704"
+                                    "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES704"
                                 },
                                 "name": {
                                     "text": [
@@ -2694,7 +2694,7 @@ const dataResponse = {
                                     "urn": "urn:siemac:org.siemac.metamac.infomodel.structuralresources.VariableElement=VR_TERRITORIO.ISLA_GRAN_CANARIA",
                                     "selfLink": {
                                         "kind": "structuralResources#variableElement",
-                                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/variables/VR_TERRITORIO/variableelements/ISLA_GRAN_CANARIA"
+                                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/variables/VR_TERRITORIO/variableelements/ISLA_GRAN_CANARIA"
                                     },
                                     "name": {
                                         "text": [
@@ -2715,7 +2715,7 @@ const dataResponse = {
                                     "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_GRANULARIDADES_GEOGRAFICAS(01.000).ISLANDS",
                                     "selfLink": {
                                         "kind": "structuralResources#code",
-                                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/codelists/ISTAC/CL_GRANULARIDADES_GEOGRAFICAS/01.000/codes/ISLANDS"
+                                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_GRANULARIDADES_GEOGRAFICAS/01.000/codes/ISLANDS"
                                     },
                                     "name": {
                                         "text": [
@@ -2736,7 +2736,7 @@ const dataResponse = {
                                 "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_AREA_ES(02.000).ES705",
                                 "selfLink": {
                                     "kind": "structuralResources#code",
-                                    "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES705"
+                                    "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES705"
                                 },
                                 "name": {
                                     "text": [
@@ -2759,7 +2759,7 @@ const dataResponse = {
                                     "urn": "urn:siemac:org.siemac.metamac.infomodel.structuralresources.VariableElement=VR_TERRITORIO.ISLA_LANZAROTE",
                                     "selfLink": {
                                         "kind": "structuralResources#variableElement",
-                                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/variables/VR_TERRITORIO/variableelements/ISLA_LANZAROTE"
+                                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/variables/VR_TERRITORIO/variableelements/ISLA_LANZAROTE"
                                     },
                                     "name": {
                                         "text": [
@@ -2780,7 +2780,7 @@ const dataResponse = {
                                     "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_GRANULARIDADES_GEOGRAFICAS(01.000).ISLANDS",
                                     "selfLink": {
                                         "kind": "structuralResources#code",
-                                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/codelists/ISTAC/CL_GRANULARIDADES_GEOGRAFICAS/01.000/codes/ISLANDS"
+                                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_GRANULARIDADES_GEOGRAFICAS/01.000/codes/ISLANDS"
                                     },
                                     "name": {
                                         "text": [
@@ -2801,7 +2801,7 @@ const dataResponse = {
                                 "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_AREA_ES(02.000).ES708",
                                 "selfLink": {
                                     "kind": "structuralResources#code",
-                                    "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES708"
+                                    "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES708"
                                 },
                                 "name": {
                                     "text": [
@@ -2824,7 +2824,7 @@ const dataResponse = {
                                     "urn": "urn:siemac:org.siemac.metamac.infomodel.structuralresources.VariableElement=VR_TERRITORIO.ISLA_HIERRO",
                                     "selfLink": {
                                         "kind": "structuralResources#variableElement",
-                                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/variables/VR_TERRITORIO/variableelements/ISLA_HIERRO"
+                                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/variables/VR_TERRITORIO/variableelements/ISLA_HIERRO"
                                     },
                                     "name": {
                                         "text": [
@@ -2845,7 +2845,7 @@ const dataResponse = {
                                     "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_GRANULARIDADES_GEOGRAFICAS(01.000).ISLANDS",
                                     "selfLink": {
                                         "kind": "structuralResources#code",
-                                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/codelists/ISTAC/CL_GRANULARIDADES_GEOGRAFICAS/01.000/codes/ISLANDS"
+                                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_GRANULARIDADES_GEOGRAFICAS/01.000/codes/ISLANDS"
                                     },
                                     "name": {
                                         "text": [
@@ -2866,7 +2866,7 @@ const dataResponse = {
                                 "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_AREA_ES(02.000).ES703",
                                 "selfLink": {
                                     "kind": "structuralResources#code",
-                                    "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES703"
+                                    "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES703"
                                 },
                                 "name": {
                                     "text": [
@@ -2889,7 +2889,7 @@ const dataResponse = {
                                     "urn": "urn:siemac:org.siemac.metamac.infomodel.structuralresources.VariableElement=VR_TERRITORIO.ISLA_GOMERA",
                                     "selfLink": {
                                         "kind": "structuralResources#variableElement",
-                                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/variables/VR_TERRITORIO/variableelements/ISLA_GOMERA"
+                                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/variables/VR_TERRITORIO/variableelements/ISLA_GOMERA"
                                     },
                                     "name": {
                                         "text": [
@@ -2910,7 +2910,7 @@ const dataResponse = {
                                     "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_GRANULARIDADES_GEOGRAFICAS(01.000).ISLANDS",
                                     "selfLink": {
                                         "kind": "structuralResources#code",
-                                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/codelists/ISTAC/CL_GRANULARIDADES_GEOGRAFICAS/01.000/codes/ISLANDS"
+                                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_GRANULARIDADES_GEOGRAFICAS/01.000/codes/ISLANDS"
                                     },
                                     "name": {
                                         "text": [
@@ -2931,7 +2931,7 @@ const dataResponse = {
                                 "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_AREA_ES(02.000).ES706",
                                 "selfLink": {
                                     "kind": "structuralResources#code",
-                                    "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES706"
+                                    "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES706"
                                 },
                                 "name": {
                                     "text": [
@@ -2954,7 +2954,7 @@ const dataResponse = {
                                     "urn": "urn:siemac:org.siemac.metamac.infomodel.structuralresources.VariableElement=VR_TERRITORIO.ISLA_LA_PALMA",
                                     "selfLink": {
                                         "kind": "structuralResources#variableElement",
-                                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/variables/VR_TERRITORIO/variableelements/ISLA_LA_PALMA"
+                                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/variables/VR_TERRITORIO/variableelements/ISLA_LA_PALMA"
                                     },
                                     "name": {
                                         "text": [
@@ -2975,7 +2975,7 @@ const dataResponse = {
                                     "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_GRANULARIDADES_GEOGRAFICAS(01.000).ISLANDS",
                                     "selfLink": {
                                         "kind": "structuralResources#code",
-                                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/codelists/ISTAC/CL_GRANULARIDADES_GEOGRAFICAS/01.000/codes/ISLANDS"
+                                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_GRANULARIDADES_GEOGRAFICAS/01.000/codes/ISLANDS"
                                     },
                                     "name": {
                                         "text": [
@@ -2996,7 +2996,7 @@ const dataResponse = {
                                 "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_AREA_ES(02.000).ES707",
                                 "selfLink": {
                                     "kind": "structuralResources#code",
-                                    "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES707"
+                                    "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES707"
                                 },
                                 "name": {
                                     "text": [
@@ -3019,7 +3019,7 @@ const dataResponse = {
                                     "urn": "urn:siemac:org.siemac.metamac.infomodel.structuralresources.VariableElement=VR_TERRITORIO.ISLA_TENERIFE",
                                     "selfLink": {
                                         "kind": "structuralResources#variableElement",
-                                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/variables/VR_TERRITORIO/variableelements/ISLA_TENERIFE"
+                                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/variables/VR_TERRITORIO/variableelements/ISLA_TENERIFE"
                                     },
                                     "name": {
                                         "text": [
@@ -3040,7 +3040,7 @@ const dataResponse = {
                                     "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_GRANULARIDADES_GEOGRAFICAS(01.000).ISLANDS",
                                     "selfLink": {
                                         "kind": "structuralResources#code",
-                                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/codelists/ISTAC/CL_GRANULARIDADES_GEOGRAFICAS/01.000/codes/ISLANDS"
+                                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_GRANULARIDADES_GEOGRAFICAS/01.000/codes/ISLANDS"
                                     },
                                     "name": {
                                         "text": [
@@ -3061,7 +3061,7 @@ const dataResponse = {
                                 "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_AREA_ES(02.000).ES709",
                                 "selfLink": {
                                     "kind": "structuralResources#code",
-                                    "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES709"
+                                    "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/ISTAC/CL_AREA_ES/02.000/codes/ES709"
                                 },
                                 "name": {
                                     "text": [
@@ -5387,7 +5387,7 @@ const dataResponse = {
                                 "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=SDMX:CL_OBS_STATUS(2.1).M",
                                 "selfLink": {
                                     "kind": "structuralResources#code",
-                                    "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/codelists/SDMX/CL_OBS_STATUS/2.1/codes/M"
+                                    "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/SDMX/CL_OBS_STATUS/2.1/codes/M"
                                 },
                                 "name": {
                                     "text": [
@@ -5408,7 +5408,7 @@ const dataResponse = {
                                 "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=SDMX:CL_OBS_STATUS(2.1).O",
                                 "selfLink": {
                                     "kind": "structuralResources#code",
-                                    "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/codelists/SDMX/CL_OBS_STATUS/2.1/codes/O"
+                                    "href": "https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/codelists/SDMX/CL_OBS_STATUS/2.1/codes/O"
                                 },
                                 "name": {
                                     "text": [
@@ -5457,7 +5457,7 @@ const dataResponse = {
             "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_FREQ(01.001).M",
             "selfLink": {
                 "kind": "structuralResources#code",
-                "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/codelists/ISTAC/CL_FREQ/01.001/codes/M"
+                "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/codelists/ISTAC/CL_FREQ/01.001/codes/M"
             },
             "name": {
                 "text": [
@@ -5487,7 +5487,7 @@ const dataResponse = {
         "bibliographicCitation": {
             "text": [
                 {
-                    "value": "A05003423 (2019) Ventas de cemento al por mayor por islas de Canarias y periodos (v1.5) [dataset]. Instituto Canario de Estadística (ISTAC) (https://www3.gobiernodecanarias.org/istac/api/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/1.5)",
+                    "value": "A05003423 (2019) Ventas de cemento al por mayor por islas de Canarias y periodos (v1.5) [dataset]. Instituto Canario de Estadística (ISTAC) (https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/1.5)",
                     "lang": "es"
                 }
             ]
@@ -5498,7 +5498,7 @@ const dataResponse = {
             "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_LANGUAGE_639_1(01.000).es",
             "selfLink": {
                 "kind": "structuralResources#code",
-                "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/codelists/ISTAC/CL_LANGUAGE_639_1/01.000/codes/es"
+                "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/codelists/ISTAC/CL_LANGUAGE_639_1/01.000/codes/es"
             },
             "name": {
                 "text": [
@@ -5521,7 +5521,7 @@ const dataResponse = {
                     "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ISTAC:CL_LANGUAGE_639_1(01.000).es",
                     "selfLink": {
                         "kind": "structuralResources#code",
-                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/codelists/ISTAC/CL_LANGUAGE_639_1/01.000/codes/es"
+                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/codelists/ISTAC/CL_LANGUAGE_639_1/01.000/codes/es"
                     },
                     "name": {
                         "text": [
@@ -5545,7 +5545,7 @@ const dataResponse = {
             "urn": "urn:siemac:org.siemac.metamac.infomodel.statisticaloperations.Operation=C00016A",
             "selfLink": {
                 "kind": "statisticalOperations#operation",
-                "href": "https://www3.gobiernodecanarias.org/istac/api/operations/latest/operations/C00016A"
+                "href": "https://datos.canarias.es/api/estadisticas/operations/latest/operations/C00016A"
             },
             "name": {
                 "text": [
@@ -5571,7 +5571,7 @@ const dataResponse = {
             "urn": "urn:sdmx:org.sdmx.infomodel.base.OrganisationUnit=ISTAC:GOBCAN(02.000).A05003423",
             "selfLink": {
                 "kind": "structuralResources#organisationUnit",
-                "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/organisationunitschemes/ISTAC/GOBCAN/02.000/organisationunits/A05003423"
+                "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/organisationunitschemes/ISTAC/GOBCAN/02.000/organisationunits/A05003423"
             },
             "name": {
                 "text": [
@@ -5590,7 +5590,7 @@ const dataResponse = {
                     "urn": "urn:sdmx:org.sdmx.infomodel.base.OrganisationUnit=ISTAC:GOBCAN(02.000).A05003423",
                     "selfLink": {
                         "kind": "structuralResources#organisationUnit",
-                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/organisationunitschemes/ISTAC/GOBCAN/02.000/organisationunits/A05003423"
+                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/organisationunitschemes/ISTAC/GOBCAN/02.000/organisationunits/A05003423"
                     },
                     "name": {
                         "text": [
@@ -5613,7 +5613,7 @@ const dataResponse = {
                     "urn": "urn:sdmx:org.sdmx.infomodel.base.OrganisationUnit=ISTAC:GOBCAN(02.000).A05003423",
                     "selfLink": {
                         "kind": "structuralResources#organisationUnit",
-                        "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/organisationunitschemes/ISTAC/GOBCAN/02.000/organisationunits/A05003423"
+                        "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/organisationunitschemes/ISTAC/GOBCAN/02.000/organisationunits/A05003423"
                     },
                     "name": {
                         "text": [
@@ -5634,7 +5634,7 @@ const dataResponse = {
             "urn": "urn:sdmx:org.sdmx.infomodel.base.Agency=SDMX:AGENCIES(1.0).ISTAC",
             "selfLink": {
                 "kind": "structuralResources#agency",
-                "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/agencyschemes/SDMX/AGENCIES/1.0/agencies/ISTAC"
+                "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/agencyschemes/SDMX/AGENCIES/1.0/agencies/ISTAC"
             },
             "name": {
                 "text": [
@@ -5665,7 +5665,7 @@ const dataResponse = {
             "urn": "urn:sdmx:org.sdmx.infomodel.base.Agency=SDMX:AGENCIES(1.0).ISTAC",
             "selfLink": {
                 "kind": "structuralResources#agency",
-                "href": "https://www3.gobiernodecanarias.org/istac/api/structural-resources/latest/agencyschemes/SDMX/AGENCIES/1.0/agencies/ISTAC"
+                "href": "https://datos.canarias.es/api/estadisticas/structural-resources/latest/agencyschemes/SDMX/AGENCIES/1.0/agencies/ISTAC"
             },
             "name": {
                 "text": [
@@ -6378,23 +6378,23 @@ const metadataResponse = {
     "property": [
         {
             "key": "metamac.statistical_operations.rest.external",
-            "value": "https://www3.gobiernodecanarias.org/istac/api/operations",
+            "value": "https://datos.canarias.es/api/estadisticas/operations",
             "kind": "commonMetadata#property"
         },
         {
             "key": "metamac.statistical_resources.rest.external",
-            "value": "https://www3.gobiernodecanarias.org/istac/api/statistical-resources",
+            "value": "https://datos.canarias.es/api/estadisticas/statistical-resources",
             "kind": "commonMetadata#property"
         }
     ]
   };
 
 const responses = {
-  "https://www3.gobiernodecanarias.org/istac/api/operations/v1.0/operations.json?query=STATUS%20EQ%20%22PRODUCTION%22&limit=1000&orderBy=ID%20ASC": statisticsOperationsResponse,
-  "https://www3.gobiernodecanarias.org/istac/api/statistical-resources/v1.0/datasets.json?limit=1000&orderBy=ID%20ASC&query=STATISTICAL_OPERATION_URN%20EQ%20%22urn:siemac:org.siemac.metamac.infomodel.statisticaloperations.Operation=E30151A%22": cubesResponse,
-  "https://www3.gobiernodecanarias.org/istac/api/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/~latest.json": dataResponse,
-  "https://www3.gobiernodecanarias.org/istac/api/statistical-resources/v1.0/datasets/ISTAC/C00016A_000002/~latest.json": notFound,
-  "https://www3.gobiernodecanarias.org/istac/api/cmetadata/v1.0/properties.json": metadataResponse
+  "https://datos.canarias.es/api/estadisticas/operations/v1.0/operations.json?query=STATUS%20EQ%20%22PRODUCTION%22&limit=1000&orderBy=ID%20ASC": statisticsOperationsResponse,
+  "https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets.json?limit=1000&orderBy=ID%20ASC&query=STATISTICAL_OPERATION_URN%20EQ%20%22urn:siemac:org.siemac.metamac.infomodel.statisticaloperations.Operation=E30151A%22": cubesResponse,
+  "https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001/~latest.json": dataResponse,
+  "https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets/ISTAC/C00016A_000002/~latest.json": notFound,
+  "https://datos.canarias.es/api/estadisticas/cmetadata/v1.0/properties.json": metadataResponse
 
 
 };
