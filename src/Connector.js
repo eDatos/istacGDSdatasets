@@ -4,12 +4,42 @@ if (typeof require !== "undefined") {
   var ConfigHelper = require("./ConfigHelper.js")["default"];
   var DataHelper = require("./DataHelper.js")["default"];
   var SchemaHelper = require("./SchemaHelper.js")["default"];
+  var JsonStatDataHelper = require("./JsonStatDataHelper.js")["default"];
+  var JsonStatSchemaHelper = require("./JsonStatSchemaHelper.js")["default"];
 }
 
 function Connector(services) {
   const configHelper = new ConfigHelper(services);
+  const jsonStatDataHelper = new JsonStatDataHelper(services);
+  const jsonStatSchemaHelper = new JsonStatSchemaHelper(services);
   const dataHelper = new DataHelper(services);
   const schemaHelper = new SchemaHelper(services);
+
+  /* istanbul ignore next */
+  /**
+   * Get data helper class according to selected config.
+   * @return {DataHelper} Data helper class
+   */
+  this.getDataHelper = function(configParams) {
+    if (configParams.inputType == "inputUrlJsonStatSelector") {
+      return jsonStatDataHelper;
+    } else {
+      return dataHelper;
+    }
+  }
+
+  /* istanbul ignore next */
+  /**
+   * Get schema helper class according to selected config.
+   * @return {SchemaHelper} Schema helper class
+   */
+  this.getSchemaHelper = function(configParams) {
+    if (configParams.inputType == "inputUrlJsonStatSelector") {
+      return jsonStatSchemaHelper;
+    } else {
+      return schemaHelper;
+    }
+  }
 
   /* istanbul ignore next */
   /**
@@ -21,7 +51,8 @@ function Connector(services) {
     const cc = DataStudioApp.createCommunityConnector();
     const fields = cc.getFields();
     const types = cc.FieldType;
-    const columns = schemaHelper.getColumns(request.configParams);
+    const selectedSchemaHelper = this.getSchemaHelper(request.configParams);
+    const columns = selectedSchemaHelper.getColumns(request.configParams);
   
     typesTranslator = {
       string: types.TEXT,
@@ -83,7 +114,7 @@ function Connector(services) {
   
   this.checkIfEndConfiguration = function(configParams) {
     let result = false;
-    if (configParams.inputType == "inputUrlSelector") {
+    if (configParams.inputType == "inputUrlSelector" || configParams.inputType == "inputUrlJsonStatSelector") {
       result = false;
     } else if (
       configParams.inputType == "variableSelector" &&
@@ -112,7 +143,8 @@ function Connector(services) {
   this.getData = function(request) {
     const requestedFieldIds = request.fields.map(field => field.name);
     const requestedFields = this.getFields(request).forIds(requestedFieldIds);
-    const rows = dataHelper.getRows(request.configParams, requestedFields);
+    const selectedDataHelper = this.getDataHelper(request.configParams);
+    const rows = selectedDataHelper.getRows(request.configParams, requestedFields);
     return {
       schema: requestedFields.build(),
       rows: rows

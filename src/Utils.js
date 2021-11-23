@@ -1,12 +1,16 @@
 function Utils() {
 
   this.getUrl = function(configParams) {
+    // TODO: commented for json stat
     switch (configParams.inputType) {
       case "variableSelector":
         return configParams.cube.substring(0, configParams.cube.lastIndexOf("/")) + "/~latest.json";
       case "inputUrlSelector":
         return configParams.inputUrl + "/~latest.json";
+      case "inputUrlJsonStatSelector":
+        return configParams.inputUrl;
     }
+    return configParams.inputUrl;
   }
   
   this.getMeasureColumns = function(response) {
@@ -27,6 +31,32 @@ function Utils() {
     }
     return measureColumns;
   }
+
+  this.getJsonStatMeasureColumns = function(response) {
+    let measureColumns = {};
+
+    const metricColumns = response.role && response.role.metric ? response.role.metric : Object.keys(response.dimension);
+
+    for(let dimId of metricColumns) {
+      const dimension = response.dimension[dimId];
+      if(dimension) {
+        measureColumns.dimension = dimId;
+        measureColumns.label = dimension.label;
+        const dimCatLabelTable = Object.keys(dimension.category.label);
+        let values = [];
+        for(let dimCatLabelIdx of dimCatLabelTable) {
+          values.push({
+            id: dimCatLabelIdx,
+            label: dimension.category.label[dimCatLabelIdx]
+          });
+        }
+        measureColumns.values = values;
+        break; // only get first
+      }
+    }
+
+    return measureColumns;
+  }
   
   this.getDimensions = function(response) {
     let dimensions = {};
@@ -39,6 +69,17 @@ function Utils() {
     }
     return dimensions;
   }
+
+  this.getJsonStatDimensions = function(response) {
+    let dimensions = {};
+    for (let i of Object.keys(response.dimension)) {
+      dimensions[i] = {
+        id: i,
+        label: response.dimension[i].label,
+      };
+    }
+    return dimensions;
+  }
   
   this.getTimeDimensions = function(response) {
     const dimensions = this.keyBy(response.metadata.dimensions.dimension, "type")
@@ -46,6 +87,18 @@ function Utils() {
       return dimensions.TIME_DIMENSION.id;
     } else {
       return undefined;
+    }
+  }
+
+  this.getJsonStatTimeDimensions = function(response) {
+    let dimensions = {};
+
+    const metricColumns = response.role && response.role.time ? response.role.time : null;
+
+    if(!metricColumns || metricColumns.length < 1) {
+      return undefined;
+    } else {
+      return metricColumns[0];
     }
   }
   
