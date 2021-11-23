@@ -108,6 +108,12 @@ function ConfigHelper(services) {
       .addOption(
         config
           .newOptionBuilder()
+          .setLabel("URL de fuente en formato json-stat")
+          .setValue("inputUrlJsonStatSelector")
+      )
+      .addOption(
+        config
+          .newOptionBuilder()
           .setLabel("Seleccionar operación estadística")
           .setValue("variableSelector")
       );
@@ -173,22 +179,35 @@ function ConfigHelper(services) {
   
   
         if (!isFirstRequest && configParams.operation && configParams.cube) {
-          config = this.obtainFormatResponse(config);
+          config = this.obtainFormatResponse(config, configParams);
         }
       }
     }
   
-    if (!isFirstRequest && configParams.inputType === "inputUrlSelector") {
-      config
-        .newTextInput()
-        .setId("inputUrl")
-        .setName("URL")
-        .setHelpText(
-          "Esta URL debe ser una petición de la API. Por ejemplo: https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001"
-        )
-        .setPlaceholder("");
-  
-      config = this.obtainFormatResponse(config);
+    if (!isFirstRequest) {
+      if (configParams.inputType === "inputUrlSelector") {
+        config
+          .newTextInput()
+          .setId("inputUrl")
+          .setName("URL")
+          .setHelpText(
+            "Esta URL debe ser una petición de la API. Por ejemplo: https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets/ISTAC/C00016A_000001"
+          )
+          .setPlaceholder("");
+
+        config = this.obtainFormatResponse(config, configParams);
+      } else if (configParams.inputType === "inputUrlJsonStatSelector") {
+        config
+          .newTextInput()
+          .setId("inputUrl")
+          .setName("URL")
+          .setHelpText(
+            "Esta URL debe ser una petición de la API JSON-STAT. Por ejemplo: https://json-stat.org/samples/galicia.json"
+          )
+          .setPlaceholder("");
+
+        config = this.obtainFormatResponse(config, configParams);
+      }
     }
   
     config.setDateRangeRequired(true);
@@ -197,7 +216,7 @@ function ConfigHelper(services) {
   }
   
   /* istanbul ignore next */
-  this.obtainFormatResponse = function(config) {
+  this.obtainFormatResponse = function(config, configParams = null) {
     config
       .newInfo()
       .setId("info2")
@@ -214,21 +233,23 @@ function ConfigHelper(services) {
       .newInfo()
       .setId("info4")
       .setText("Etiquetado");
-  
-    config
-      .newCheckbox()
-      .setId("recodeDates")
-      .setName(
-        "Incluir campo calculado con fecha a partir de periodos de referencia"
-      );
-    config
-      .newCheckbox()
-      .setId("showLabels")
-      .setName("Añadir las etiquetas de las dimensiones al conjunto de datos");
-    config
-      .newCheckbox()
-      .setId("allLanguages")
-      .setName("Añadir todos los idiomas");
+
+    if (!configParams || !configParams.inputType || configParams.inputType !== "inputUrlJsonStatSelector") {
+      config
+        .newCheckbox()
+        .setId("recodeDates")
+        .setName(
+          "Incluir campo calculado con fecha a partir de periodos de referencia"
+        );
+      config
+        .newCheckbox()
+        .setId("showLabels")
+        .setName("Añadir las etiquetas de las dimensiones al conjunto de datos");
+      config
+        .newCheckbox()
+        .setId("allLanguages")
+        .setName("Añadir todos los idiomas");
+    }
   
     return config;
   }
