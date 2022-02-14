@@ -6,6 +6,8 @@ if (typeof require !== "undefined") {
   var SchemaHelper = require("./SchemaHelper.js")["default"];
   var JsonStatDataHelper = require("./JsonStatDataHelper.js")["default"];
   var JsonStatSchemaHelper = require("./JsonStatSchemaHelper.js")["default"];
+  var LegacyDataHelper = require("./LegacyDataHelper.js")["default"];
+  var LegacySchemaHelper = require("./LegacySchemaHelper.js")["default"];
 }
 
 function Connector(services) {
@@ -14,6 +16,8 @@ function Connector(services) {
   const jsonStatSchemaHelper = new JsonStatSchemaHelper(services);
   const dataHelper = new DataHelper(services);
   const schemaHelper = new SchemaHelper(services);
+  const legacyDataHelper = new LegacyDataHelper(services);
+  const legacySchemaHelper = new LegacySchemaHelper(services);
 
   /* istanbul ignore next */
   /**
@@ -23,6 +27,8 @@ function Connector(services) {
   this.getDataHelper = function(configParams) {
     if (configParams.inputType == "inputUrlJsonStatSelector") {
       return jsonStatDataHelper;
+    } else if (configParams.inputType == "inputUrlLegacySelector") {
+      return legacyDataHelper;
     } else {
       return dataHelper;
     }
@@ -36,6 +42,8 @@ function Connector(services) {
   this.getSchemaHelper = function(configParams) {
     if (configParams.inputType == "inputUrlJsonStatSelector") {
       return jsonStatSchemaHelper;
+    } else if (configParams.inputType == "inputUrlLegacySelector") {
+      return legacySchemaHelper;
     } else {
       return schemaHelper;
     }
@@ -114,7 +122,7 @@ function Connector(services) {
   
   this.checkIfEndConfiguration = function(configParams) {
     let result = false;
-    if (configParams.inputType == "inputUrlSelector" || configParams.inputType == "inputUrlJsonStatSelector") {
+    if (configParams.inputType == "inputUrlSelector" || configParams.inputType == "inputUrlJsonStatSelector" || configParams.inputType == "inputUrlLegacySelector") {
       result = false;
     } else if (
       configParams.inputType == "variableSelector" &&

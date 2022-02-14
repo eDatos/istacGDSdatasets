@@ -8,6 +8,7 @@ function Utils() {
       case "inputUrlSelector":
         return configParams.inputUrl + "/~latest.json";
       case "inputUrlJsonStatSelector":
+      case "inputUrlLegacySelector":
         return configParams.inputUrl;
     }
     return configParams.inputUrl;

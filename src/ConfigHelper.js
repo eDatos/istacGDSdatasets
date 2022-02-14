@@ -108,6 +108,12 @@ function ConfigHelper(services) {
       .addOption(
         config
           .newOptionBuilder()
+          .setLabel("URL de fuente en formato legacy")
+          .setValue("inputUrlLegacySelector")
+      )
+      .addOption(
+        config
+          .newOptionBuilder()
           .setLabel("URL de fuente en formato json-stat")
           .setValue("inputUrlJsonStatSelector")
       )
@@ -207,6 +213,17 @@ function ConfigHelper(services) {
           .setPlaceholder("");
 
         config = this.obtainFormatResponse(config, configParams);
+      } else if (configParams.inputType === "inputUrlLegacySelector") {
+        config
+          .newTextInput()
+          .setId("inputUrl")
+          .setName("URL")
+          .setHelpText(
+            "Esta URL debe ser una petición de la API Legacy. Por ejemplo: http://www.gobiernodecanarias.org/istac/jaxi-istac/tabla.do?accion=jsonMtd&uuidConsulta=e3665b2f-68a4-4e54-86a9-9da0062887e1"
+          )
+          .setPlaceholder("");
+
+        config = this.obtainFormatResponse(config, configParams);
       }
     }
   
@@ -217,38 +234,67 @@ function ConfigHelper(services) {
   
   /* istanbul ignore next */
   this.obtainFormatResponse = function(config, configParams = null) {
-    config
-      .newInfo()
-      .setId("info2")
-      .setText("Formato de respuesta:");
-    config
-      .newInfo()
-      .setId("info3")
-      .setText("Modelo de datos");
-    config
-      .newCheckbox()
-      .setId("showMeasureColumns")
-      .setName("Visualizar las medidas como columnas");
-    config
-      .newInfo()
-      .setId("info4")
-      .setText("Etiquetado");
 
-    if (!configParams || !configParams.inputType || configParams.inputType !== "inputUrlJsonStatSelector") {
+    if(configParams && configParams.inputType && configParams.inputType == "inputUrlLegacySelector") {
+      config
+       .newInfo()
+       .setId("info4")
+       .setText("Etiquetado");
+
       config
         .newCheckbox()
         .setId("recodeDates")
         .setName(
           "Incluir campo calculado con fecha a partir de periodos de referencia"
         );
+
+      config
+        .newCheckbox()
+        .setId("showGranularity")
+        .setName(
+          'Añadir las columnas "Granularidad geográfica" y "Granularidad temporal"'
+        );
+
       config
         .newCheckbox()
         .setId("showLabels")
-        .setName("Añadir las etiquetas de las dimensiones al conjunto de datos");
+        .setName(
+          "Añadir las etiquetas geográficas y temporales al conjunto de datos"
+        );
+    } else {
+      config
+        .newInfo()
+        .setId("info2")
+        .setText("Formato de respuesta:");
+      config
+        .newInfo()
+        .setId("info3")
+        .setText("Modelo de datos");
       config
         .newCheckbox()
-        .setId("allLanguages")
-        .setName("Añadir todos los idiomas");
+        .setId("showMeasureColumns")
+        .setName("Visualizar las medidas como columnas");
+      config
+        .newInfo()
+        .setId("info4")
+        .setText("Etiquetado");
+
+      if (!configParams || !configParams.inputType || configParams.inputType !== "inputUrlJsonStatSelector") {
+        config
+          .newCheckbox()
+          .setId("recodeDates")
+          .setName(
+            "Incluir campo calculado con fecha a partir de periodos de referencia"
+          );
+        config
+          .newCheckbox()
+          .setId("showLabels")
+          .setName("Añadir las etiquetas de las dimensiones al conjunto de datos");
+        config
+          .newCheckbox()
+          .setId("allLanguages")
+          .setName("Añadir todos los idiomas");
+      }
     }
   
     return config;
