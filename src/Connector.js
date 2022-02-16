@@ -27,11 +27,16 @@ function Connector(services) {
   this.getDataHelper = function(configParams) {
     if (configParams.inputType == "inputUrlJsonStatSelector") {
       return jsonStatDataHelper;
-    } else if (configParams.inputType == "inputUrlLegacySelector") {
-      return legacyDataHelper;
-    } else {
-      return dataHelper;
     }
+    if(configParams.inputType == "inputUrlSelector" && configParams.inputUrl) {
+      if(configParams.inputUrl.indexOf("http://www.gobiernodecanarias.org/istac/jaxi-istac/tabla.do?accion=jsonMtd&") === 0) {
+        return legacyDataHelper;
+      }
+      if(configParams.inputUrl.indexOf("https://www.gobiernodecanarias.org/istac/jaxi-istac/tabla.do?accion=jsonMtd&") === 0) {
+        return legacyDataHelper;
+      }
+    }
+    return dataHelper;
   }
 
   /* istanbul ignore next */
@@ -42,11 +47,16 @@ function Connector(services) {
   this.getSchemaHelper = function(configParams) {
     if (configParams.inputType == "inputUrlJsonStatSelector") {
       return jsonStatSchemaHelper;
-    } else if (configParams.inputType == "inputUrlLegacySelector") {
-      return legacySchemaHelper;
-    } else {
-      return schemaHelper;
     }
+    if(configParams.inputType == "inputUrlSelector" && configParams.inputUrl) {
+      if(configParams.inputUrl.indexOf("http://www.gobiernodecanarias.org/istac/jaxi-istac/tabla.do?accion=jsonMtd&") === 0) {
+        return legacySchemaHelper;
+      }
+      if(configParams.inputUrl.indexOf("https://www.gobiernodecanarias.org/istac/jaxi-istac/tabla.do?accion=jsonMtd&") === 0) {
+        return legacySchemaHelper;
+      }
+    }
+    return schemaHelper;
   }
 
   /* istanbul ignore next */
