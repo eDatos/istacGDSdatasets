@@ -105,6 +105,12 @@ function ConfigHelper(services) {
           .setLabel("URL del cubo / consulta de datos")
           .setValue("inputUrlSelector")
       )
+      // .addOption(
+      //   config
+      //     .newOptionBuilder()
+      //     .setLabel("URL de fuente en formato legacy")
+      //     .setValue("inputUrlLegacySelector")
+      // )
       .addOption(
         config
           .newOptionBuilder()
@@ -207,6 +213,17 @@ function ConfigHelper(services) {
           .setPlaceholder("");
 
         config = this.obtainFormatResponse(config, configParams);
+      // } else if (configParams.inputType === "inputUrlLegacySelector") {
+      //   config
+      //     .newTextInput()
+      //     .setId("inputUrl")
+      //     .setName("URL")
+      //     .setHelpText(
+      //       "Esta URL debe ser una petición de la API Legacy. Por ejemplo: http://www.gobiernodecanarias.org/istac/jaxi-istac/tabla.do?accion=jsonMtd&uuidConsulta=e3665b2f-68a4-4e54-86a9-9da0062887e1"
+      //     )
+      //     .setPlaceholder("");
+
+      //   config = this.obtainFormatResponse(config, configParams);
       }
     }
   
@@ -240,6 +257,12 @@ function ConfigHelper(services) {
         .setId("recodeDates")
         .setName(
           "Incluir campo calculado con fecha a partir de periodos de referencia"
+        );
+      config
+        .newCheckbox()
+        .setId("showGranularity")
+        .setName(
+          'Añadir las columnas "Granularidad geográfica" y "Granularidad temporal" (solo para URL legacy)'
         );
       config
         .newCheckbox()
