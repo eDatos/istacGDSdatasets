@@ -22,13 +22,15 @@ Now you can push code with your changes to Google by running:
 
 ### How to try the connector
 
-Once you have develop something and you want to try it you have to push it and the connector will be in the Latest [Version(Head)](https://datastudio.google.com/datasources/create?connectorId=AKfycbyCt4lH-5UM4z7o-2h21WBGat3XOlBxqmd736Bx1M11cD7NaipYHOCc9A3mUoordTM "Latest Version").
+Once you have develop something and you want to try it you have to push it and the connector will be in the [Latest Version(Head)](https://datastudio.google.com/datasources/create?connectorId=AKfycbzFJfMdYLJeFpZ6rf5p-h2jHyB0EkjdZSP2t8BGFg "Latest Version").
+
+When the development version is ready for release, the production deployment will be in the [Production deployment](https://datastudio.google.com/datasources/create?connectorId=AKfycbw4sga_3MyB8TOglBoHsI__IVDu0VYssfwKoxaOt2WUdAJJ3JuxdRegkFSWDmC89MI "Production deployment")
 
 You could also get this url by editing the [project](https://script.google.com/home) in the G Suite Developer Hub. Then click in `Publish --> Publish from manifest`. You can check the [documentation](https://developers.google.com/datastudio/connector/use).
 
 ### Debugging
 
-To debug the connector you can put console.logs in the code, then you can see the logs in https://script.google.com/home/projects/ID_OF_THE_SCRIPT/executions (that's all I got for the moment), for example, you can see the logs for this connector in [here](https://script.google.com/home/projects/1eerQGH50a5TQZmNAcgIjXz2vuoQfgSsH2ShhQFZE0u0pWngrgC1_EYZl/executions).
+To debug the connector you can put console.logs in the code, then you can see the logs in https://script.google.com/home/projects/ID_OF_THE_SCRIPT/executions (that's all I got for the moment), for example, you can see the logs for this connector in [here](https://script.google.com/home/projects/17Q9fOWQv2bJMY3coJWIeoMLD2ItOJ04Wd3KswUiALS5C5M6Om5NidcPt/executions).
 
 ## Production environment
 
