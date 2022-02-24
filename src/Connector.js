@@ -28,7 +28,7 @@ function Connector(services) {
     if (configParams.inputType == "inputUrlJsonStatSelector") {
       return jsonStatDataHelper;
     }
-    if(configParams.inputType == "inputUrlSelector" && configParams.inputUrl) {
+    if((configParams.inputType == "inputUrlSelector" || configParams.inputType == "inputUrlLegacySelector") && configParams.inputUrl) {
       if(configParams.inputUrl.indexOf("http://www.gobiernodecanarias.org/istac/jaxi-istac/tabla.do?accion=jsonMtd&") === 0) {
         return legacyDataHelper;
       }
@@ -48,7 +48,7 @@ function Connector(services) {
     if (configParams.inputType == "inputUrlJsonStatSelector") {
       return jsonStatSchemaHelper;
     }
-    if(configParams.inputType == "inputUrlSelector" && configParams.inputUrl) {
+    if((configParams.inputType == "inputUrlSelector" || configParams.inputType == "inputUrlLegacySelector") && configParams.inputUrl) {
       if(configParams.inputUrl.indexOf("http://www.gobiernodecanarias.org/istac/jaxi-istac/tabla.do?accion=jsonMtd&") === 0) {
         return legacySchemaHelper;
       }
@@ -71,11 +71,17 @@ function Connector(services) {
     const types = cc.FieldType;
     const selectedSchemaHelper = this.getSchemaHelper(request.configParams);
     const columns = selectedSchemaHelper.getColumns(request.configParams);
-  
+
     typesTranslator = {
       string: types.TEXT,
       float: types.NUMBER,
-      date: types.YEAR_MONTH_DAY
+      date: types.YEAR_MONTH_DAY,
+      date_YEARLY: types.YEAR,
+      date_MONTHLY: types.YEAR_MONTH,
+      date_QUARTERLY: types.YEAR_QUARTER,
+      date_BIYEARLY: types.YEAR_MONTH,
+      date_DAILY: types.YEAR_MONTH_DAY, // TODO: translate to YEAR_MONTH_DAY
+      date_WEEKLY: types.YEAR_WEEK
     };
     for(let column of columns) {
       if (column.columnRole === "metric") {

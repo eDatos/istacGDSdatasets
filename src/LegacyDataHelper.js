@@ -1,7 +1,3 @@
-if (typeof require !== "undefined") {
-  const LegacyUtils = require("./LegacyUtils")["default"];
-}
-
 function LegacyDataHelper(services) {
   const cacheHelper = services.CacheHelper;
   const utils = services.LegacyUtils;
@@ -58,6 +54,7 @@ function LegacyDataHelper(services) {
     }
     
     let tableData = [];
+    let first = true;
     
     for(let row of indicatorsResponse.data) {
       let rowByDim = {};
@@ -77,6 +74,10 @@ function LegacyDataHelper(services) {
         }
       }
       rowByDim['Valor'] = row.Valor;
+      if(first) {
+        console.log(rowByDim);
+        first = false;
+      }
       tableData.push({ values: requestedFieldsArray.map(i => (rowByDim[i] === null || typeof rowByDim[i] !== 'undefined') ? rowByDim[i] : '') });
     }
     

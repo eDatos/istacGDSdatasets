@@ -1,9 +1,10 @@
+
 const dateGranularityRegex = {
   "YEARLY": [/^([0-9]{4})$/im, "$1"],
   "MONTHLY": [/^([0-9]{4})M([0-9]{2})$/im, "$1$2"],
   "QUARTERLY": [/^([0-9]{4})Q([0-9])$/im, "$1$2"],
   "BIYEARLY": [/^([0-9]{4})H([0-9])$/im, null, date => date.substring(0, 4) + "0" + (parseInt(date.substring(5, 1))*6)],
-  "DAILY": [/^([0-9]{6})$/im, "$1"],
+  "DAILY": [/^([0-9]{6})$/im, "$1"], // TODO: translate to YEAR_MONTH_DAY
   "WEEKLY": [/^([0-9]{4})W([0-9]{2})$/im, "$1$2"]
 };
 
@@ -76,6 +77,7 @@ function LegacyUtils() {
       //   }
       //   break;
       case "inputUrlLegacySelector":
+      case "inputUrlSelector":
         if (configParams.inputUrl.indexOf("/api/indicators/v1.0/indicators/") > -1) {
           col = { id: response.id, name: response.title.es };
         } else if (configParams.inputUrl.indexOf("/api/indicators/v1.0/indicatorsSystems/") > -1) {
