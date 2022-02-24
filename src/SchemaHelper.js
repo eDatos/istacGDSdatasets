@@ -12,6 +12,7 @@ function SchemaHelper(services) {
     if (configParams.inputType == "inputUrlSelector") {
       this._checkInputURL(configParams);
     }
+
     const url = utils.getUrl(configParams);
     const code = cacheHelper.getHash("schema_data_" + cacheHelper.getObjectHash(configParams));
     let mainCols = cacheHelper.get(code);

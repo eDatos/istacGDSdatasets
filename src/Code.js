@@ -5,18 +5,21 @@ if (typeof require !== "undefined") {
   var CacheHelper = require("./CacheHelper.js")["default"];
   var Utils = require("./Utils.js")["default"];
   var LegacyUtils = require("./LegacyUtils.js")["default"];
+  var RecodeDatesHelper = require("./RecodeDatesHelper.js")["default"];
 }
 
 /* global CacheService, UrlFetchApp, Utilities */
 function getConnector() {
   const utils = new Utils();
   const legacyUtils = new LegacyUtils();
+  const recodeDatesHelper = new RecodeDatesHelper();
   const urlFetchApp = UrlFetchApp;
   return new Connector({
     Utils: utils,
     LegacyUtils: legacyUtils,
     CacheService: CacheService,
     UrlFetchApp: urlFetchApp,
+    RecodeDatesHelper: recodeDatesHelper,
     CacheHelper: new CacheHelper(CacheService, utils, urlFetchApp, Utilities)
   });
 }

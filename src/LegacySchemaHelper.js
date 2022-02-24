@@ -10,7 +10,7 @@ function LegacySchemaHelper(services) {
    * @return {list} The list with the Schema.
    */
   this.getColumns = function(configParams) {
-    if(configParams.inputType == "inputUrlLegacySelector") {
+    if (configParams.inputType == "inputUrlSelector" || configParams.inputType == "inputUrlLegacySelector") {
       this._checkInputURL(configParams);
     }
   
@@ -34,6 +34,7 @@ function LegacySchemaHelper(services) {
     const spatials = (indicatorsResponse.spatials && indicatorsResponse.spatials.map(i => utils.normalize(i))) || [];
     
     const categories = indicatorsResponse.categories;
+    const variables = categories.map(i => utils.normalize(i.variable));
     
     let variableCodes = {};
     let variableLabels = {};
@@ -62,7 +63,17 @@ function LegacySchemaHelper(services) {
           timeCols.push({id: 'Granularidad_' + k, name: 'Granularidad ' + variableLabels[k], columnRole: 'dimension', dataType: 'string'});
         }
         if(configParams.recodeDates) {
-          timeCols.push({id: 'Fecha_' + k, name: 'Fecha ' + variableLabels[k], columnRole: 'dimension', dataType: 'date'});
+          // Get a data row and get date field granularity
+          const row = indicatorsResponse.data[0];
+          let granularity = null;
+          if(row) {
+            granularity = utils.getDateGranularity(row.dimCodes[variables.indexOf(k)]);
+          }
+          if(granularity === null) {
+            timeCols.push({id: 'Fecha_' + k, name: 'Fecha ' + variableLabels[k], columnRole: 'dimension', dataType: 'date'});
+          } else {
+            timeCols.push({id: 'Fecha_' + k, name: 'Fecha ' + variableLabels[k], columnRole: 'dimension', dataType: 'date_' + granularity});
+          }
         } else {
           timeCols.push({id: k, name: variableLabels[k], columnRole: 'dimension', dataType: 'string'});
           if(configParams.showLabels) {

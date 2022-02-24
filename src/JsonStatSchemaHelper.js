@@ -9,9 +9,8 @@ function JsonStatSchemaHelper(services) {
    * @return {list} The list with the Schema.
    */
   this.getColumns = function (configParams) {
-    if (configParams.inputType == "inputUrlJsonStatSelector") {
-      this._checkInputURL(configParams);
-    }
+    this._checkInputURL(configParams);
+
     const url = utils.getUrl(configParams);
     const code = cacheHelper.getHash("schema_data_" + cacheHelper.getObjectHash(configParams));
     let mainCols = cacheHelper.get(code);

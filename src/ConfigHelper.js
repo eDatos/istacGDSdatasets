@@ -262,7 +262,7 @@ function ConfigHelper(services) {
         .newCheckbox()
         .setId("showGranularity")
         .setName(
-          'Añadir las columnas "Granularidad geográfica" y "Granularidad temporal" (solo para URL legacy)'
+          'Añadir las columnas "Granularidad geográfica" y "Granularidad temporal" (solo para URL jaxi-istac)'
         );
       config
         .newCheckbox()

@@ -1,3 +1,4 @@
+const cacheVersion = "20210224_1302";
 
 /**
  * Builds the Cache Helper  object.
@@ -32,6 +33,7 @@ function CacheHelper(cacheService, utils, urlFetchApp, utilities) {
   }
   
   this.put = function(key, value) {
+    key = cacheVersion + "_" + key;
     const json = JSON.stringify(value);
     let chunks = {};
     if(json.length > CHUNKSIZE) {
@@ -46,6 +48,7 @@ function CacheHelper(cacheService, utils, urlFetchApp, utilities) {
   }
   
   this.get = function(key) {
+    key = cacheVersion + "_" + key;
     if(localCache[key]) {
       return localCache[key];
     }
@@ -64,6 +67,7 @@ function CacheHelper(cacheService, utils, urlFetchApp, utilities) {
     const chunkLength = Object.keys(chunks).length;
     // Some cache chunk may be deleted, if that happens, remove all chunks and main key to free unusable space
     if(!chunkLength) {
+      console.log('chunk length invalid, wanted ' + nChunks + ', got', chunkLength);
       keys.push(key);
       cache.removeAll(keys);
       return null;

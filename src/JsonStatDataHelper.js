@@ -1,11 +1,8 @@
-if (typeof require !== "undefined") {
-  //var RecodeDatesHelper = require("./RecodeDatesHelper")["default"];
-}
 
 function JsonStatDataHelper(services) {
   const cacheHelper = services.CacheHelper;
   const utils = services.Utils;
-  //const recodeDatesHelper = new RecodeDatesHelper();
+  const recodeDatesHelper = services.RecodeDatesHelper;
 
   /* istanbul ignore next */
   /**
