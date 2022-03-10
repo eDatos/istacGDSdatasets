@@ -1,12 +1,38 @@
 function Utils() {
 
   this.getUrl = function(configParams) {
+    let url = '';
+    let substring = '';
+    let lastPath = '';
+    let finalUrl = '';
     // TODO: commented for json stat
     switch (configParams.inputType) {
       case "variableSelector":
         return configParams.cube.substring(0, configParams.cube.lastIndexOf("/")) + "/~latest.json";
       case "inputUrlSelector":
-        return configParams.inputUrl + "/~latest.json";
+        if(configParams.inputUrl.indexOf('?') > 0) {
+          url = configParams.inputUrl.substr(0, configParams.inputUrl.indexOf('?'));
+          substring = configParams.inputUrl.substr(configParams.inputUrl.indexOf('?'));
+        } else {
+          url = configParams.inputUrl;
+          substring = '';
+        }
+        lastPath = url.substr(url.lastIndexOf("/"));
+        if(lastPath == '') {
+          finalUrl = url + '/~latest.json' + substring;
+        } else if(lastPath == '/') {
+          finalUrl = url + '~latest.json' + substring;
+        } else if(lastPath == '/~latest') {
+          finalUrl = url + '.json' + substring;
+        } else if(lastPath == '/~latest.json') {
+          finalUrl = url + substring;
+        } else if(/\/[0-9]\.[0-9]\/*$/.test(lastPath)) {
+          url = url.replace(/\/[0-9]\.[0-9]\/*$/, '');
+          finalUrl = url + '/~latest.json' + substring;
+        } else {
+          finalUrl = url + '/~latest.json' + substring;
+        }
+        return finalUrl;
       case "inputUrlJsonStatSelector":
       case "inputUrlLegacySelector":
         return configParams.inputUrl;
