@@ -112,9 +112,12 @@ function SchemaHelper(services) {
     let error = undefined;
     if (!configParams.inputUrl) {
       error = "URL field must not be empty";
-    } else if (configParams.inputUrl.indexOf("https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets/ISTAC/") !== 0){
-      error = "URL field entered is not correct for this connector";
-    } 
+    } else if (configParams.inputUrl.indexOf("https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets/ISTAC/") == 0){
+      return;
+    } else if (configParams.inputUrl.indexOf("https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/queries/ISTAC/") == 0){
+      return;
+    }
+    error = "URL field entered is not correct for this connector";
     if (error) {
       DataStudioApp.createCommunityConnector()
         .newUserError()
