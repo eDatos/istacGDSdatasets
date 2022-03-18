@@ -5,10 +5,12 @@ function Utils() {
     let substring = '';
     let lastPath = '';
     let finalUrl = '';
+    let isQuery = false;
     // TODO: commented for json stat
     switch (configParams.inputType) {
       case "variableSelector":
-        return configParams.cube.substring(0, configParams.cube.lastIndexOf("/")) + "/~latest.json";
+        finalUrl = configParams.cube.substring(0, configParams.cube.lastIndexOf("/")) + "/~latest.json";
+        break;
       case "inputUrlSelector":
         if(configParams.inputUrl.indexOf('?') > 0) {
           url = configParams.inputUrl.substr(0, configParams.inputUrl.indexOf('?'));
@@ -17,9 +19,13 @@ function Utils() {
           url = configParams.inputUrl;
           substring = '';
         }
+
+        isQuery = url.indexOf('/queries/ISTAC') > 0;
         lastPath = url.substr(url.lastIndexOf("/"));
-        if(lastPath == '') {
-          finalUrl = url + '/~latest.json' + substring;
+        if(/\.json$/.test(lastPath)) {
+          finalUrl = url + substring;
+        } else if(lastPath == '') {
+          finalUrl = url + (isQuery ? '.json' : '/~latest.json') + substring;
         } else if(lastPath == '/') {
           finalUrl = url + '~latest.json' + substring;
         } else if(lastPath == '/~latest') {
@@ -27,17 +33,18 @@ function Utils() {
         } else if(lastPath == '/~latest.json') {
           finalUrl = url + substring;
         } else if(/\/[0-9]\.[0-9]\/*$/.test(lastPath)) {
-          url = url.replace(/\/[0-9]\.[0-9]\/*$/, '');
-          finalUrl = url + '/~latest.json' + substring;
+          url = url.replace(/\/*$/, '');
+          finalUrl = url + '.json' + substring;
         } else {
-          finalUrl = url + '/~latest.json' + substring;
+          finalUrl = url + (isQuery ? '.json' : '/~latest.json') + substring;
         }
-        return finalUrl;
+        break;
       case "inputUrlJsonStatSelector":
       case "inputUrlLegacySelector":
-        return configParams.inputUrl;
+        finalUrl = configParams.inputUrl;
+        break;
     }
-    return configParams.inputUrl;
+    return encodeURI(finalUrl);
   }
   
   this.getMeasureColumns = function(response) {
@@ -158,7 +165,7 @@ function Utils() {
   this.throwConectorError = function(exception, message) {
      DataStudioApp.createCommunityConnector()
        .newUserError()
-       .setDebugText("Error while fetching data from API. Exception details: " + exception)
+       .setDebugText("Error while fetching data from API. Exception details: " + exception.stack)
        .setText(message)
        .throwException();
   }

@@ -23,7 +23,7 @@ function LegacyUtils() {
   }
 
   this.getUrl = function(configParams) {
-    return configParams.inputUrl;
+    return encodeURI(configParams.inputUrl);
   }
   
   this.getDateGranularity = function(date) {
