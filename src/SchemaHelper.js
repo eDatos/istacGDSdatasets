@@ -96,13 +96,72 @@ function SchemaHelper(services) {
       }
     }
     
-    if (configParams.recodeDates) {
-      result.push({
+    if(configParams.recodeDates) {
+      // Get a data row and get date field granularity
+
+      const granularityCodes = {
+        'A': 'YEARLY',
+        'M': 'MONTHLY',
+        'Q': 'QUARTERLY',
+        'D': 'DAILY',
+        'W': 'WEEKLY',
+        'S': 'BIYEARLY'
+      };
+
+      const granularityOrder = {
+        'YEARLY': 1,
+        'BIYEARLY': 2,
+        'QUARTERLY': 3,
+        'MONTHLY': 4,
+        'WEEKLY': 5,
+        'DAILY': 6
+      };
+
+      let dateCol = {
         id: "Fecha",
         name: "Fecha",
         columnRole: "dimension",
         dataType: "date"
-      });
+      };
+
+      const granularitySet = new Set();
+
+      let minimumGranularityIndex = 0;
+      let minimumGranularity = '';
+
+      const metadata = cubeResponse.metadata.temporalGranularities;
+      if(metadata) {
+        for(let granularityResource of metadata.resource) {
+          if(granularityCodes[granularityResource.id]) {
+            granularitySet.add(granularityCodes[granularityResource.id]);
+          }
+        }
+      } else {
+        for(let row of cubeResponse.metadata.dimensions.dimension) {
+          if(row.type == "TIME_DIMENSION") {
+            for(let dimensionValue of row.dimensionValues.value) {
+              granularitySet.add(dimensionValue.temporalGranularity);
+            }
+            break;
+          }
+        }
+      }
+
+      // TODO: comprobar valores posibles
+      for(let temporalGranularity of granularitySet) {
+        if(granularityOrder[temporalGranularity] && granularityOrder[temporalGranularity] > minimumGranularityIndex) {
+          minimumGranularityIndex = granularityOrder[temporalGranularity];
+          minimumGranularity = temporalGranularity;
+        }
+      }
+
+      if(minimumGranularityIndex == 0 || minimumGranularity == '') {
+        dateCol.dataType = "date";
+      } else {
+        dateCol.dataType = "date_" + minimumGranularity;
+      }
+
+      result.push(dateCol);
     }
     
     return result;
@@ -123,9 +182,11 @@ function SchemaHelper(services) {
         .newUserError()
         .setDebugText("Error with inputUrl: " + error)
         .setText(
-          "Por favor, asegúrese de que el campo URL no está vacío y que la URL tiene el siguiente formato: " +
+          "Por favor, asegúrese de que el campo URL no está vacío y que la URL tiene el siguiente formato: \n" +
           "https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets/ISTAC/" +
-          "CODIGO_DEL_CUBO"
+          "CODIGO_DEL_CUBO\n" +
+          "https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/queries/ISTAC/" +
+          "CODIGO_DE_CONSULTA\n"
         )
         .throwException();
     }

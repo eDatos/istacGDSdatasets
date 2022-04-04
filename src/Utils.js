@@ -20,23 +20,16 @@ function Utils() {
           substring = '';
         }
 
-        isQuery = url.indexOf('/queries/ISTAC') > 0;
+        url = url.replace(/\/*$/, '');
+
+        isQuery = url.indexOf('/queries/ISTAC/') > 0;
         lastPath = url.substr(url.lastIndexOf("/"));
         if(/\.json$/.test(lastPath)) {
           finalUrl = url + substring;
-        } else if(lastPath == '') {
-          finalUrl = url + (isQuery ? '.json' : '/~latest.json') + substring;
-        } else if(lastPath == '/') {
-          finalUrl = url + '~latest.json' + substring;
-        } else if(lastPath == '/~latest') {
-          finalUrl = url + '.json' + substring;
-        } else if(lastPath == '/~latest.json') {
-          finalUrl = url + substring;
-        } else if(/\/[0-9]\.[0-9]\/*$/.test(lastPath)) {
-          url = url.replace(/\/*$/, '');
+        } else if(lastPath == '/~latest' || isQuery || /\/[0-9]+\.[0-9]+$/.test(lastPath)) {
           finalUrl = url + '.json' + substring;
         } else {
-          finalUrl = url + (isQuery ? '.json' : '/~latest.json') + substring;
+          finalUrl = url + '/~latest.json' + substring;
         }
         break;
       case "inputUrlJsonStatSelector":
@@ -71,22 +64,37 @@ function Utils() {
 
     const metricColumns = response.role && response.role.metric ? response.role.metric : Object.keys(response.dimension);
 
-    for(let dimId of metricColumns) {
-      const dimension = response.dimension[dimId];
-      if(dimension) {
-        measureColumns.dimension = dimId;
-        measureColumns.label = dimension.label;
-        const dimCatLabelTable = Object.keys(dimension.category.label);
-        let values = [];
-        for(let dimCatLabelIdx of dimCatLabelTable) {
-          values.push({
-            id: dimCatLabelIdx,
-            label: dimension.category.label[dimCatLabelIdx]
-          });
+    let dimId = null;
+
+    // if(metricColumns.indexOf('unit') >= 0) {
+    //   dimId = 'unit';
+    // } else {
+      for(let curDimId of metricColumns) {
+        const curDimension = response.dimension[curDimId];
+        if(curDimension) {
+          dimId = curDimId;
+          break;
         }
-        measureColumns.values = values;
-        break; // only get first
       }
+    // }
+
+    if(dimId === null) {
+      return {};
+    }
+
+    const dimension = response.dimension[dimId];
+    if(dimension) {
+      measureColumns.dimension = dimId;
+      measureColumns.label = dimension.label;
+      const dimCatLabelTable = Object.keys(dimension.category.label);
+      let values = [];
+      for(let dimCatLabelIdx of dimCatLabelTable) {
+        values.push({
+          id: dimCatLabelIdx,
+          label: dimension.category.label[dimCatLabelIdx]
+        });
+      }
+      measureColumns.values = values;
     }
 
     return measureColumns;
@@ -129,11 +137,16 @@ function Utils() {
 
     const metricColumns = response.role && response.role.time ? response.role.time : null;
 
-    if(!metricColumns || metricColumns.length < 1) {
+    if(!metricColumns) {
+      if(Object.keys(response.dimension).indexOf('time') >= 0) {
+        return 'time';
+      }
       return undefined;
-    } else {
-      return metricColumns[0];
     }
+    if(metricColumns.length < 1) {
+      return undefined;
+    }
+    return metricColumns[0];
   }
   
   /*
@@ -159,7 +172,9 @@ function Utils() {
     return destinationObject;
   }
   
- 
+  this.normalize = function(id) {
+    return id.replace(/[^a-zA-Z0-9]/gi, '_');
+  }
   
   /* istanbul ignore next */
   this.throwConectorError = function(exception, message) {

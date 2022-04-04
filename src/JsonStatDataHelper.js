@@ -14,7 +14,7 @@ function JsonStatDataHelper(services) {
   this.getRows = function (configParams, requestedFields) {
     const requestedFieldsArray = requestedFields.asArray().map(i => i.getId());
     const cachedCode = cacheHelper.getHash(
-      "configParams_" + cacheHelper.getObjectHash({'params': configParams, 'fields': requestedFieldsArray})
+      "configParams_" + cacheHelper.getObjectHash({'url': utils.getUrl(configParams), 'params': configParams, 'fields': requestedFieldsArray})
     );
     let processedRows = cacheHelper.get(cachedCode);
     if (!processedRows) {
@@ -26,13 +26,28 @@ function JsonStatDataHelper(services) {
     }
     return processedRows;
   }
+
+  this._fixFieldId = function(fieldId) {
+    //return fieldId;
+    const idsTranslator = [
+      "_date_YEAR", "_date_YEAR_MONTH",
+      "_date_YEAR_QUARTER", "_date_YEAR_MONTH_DAY",
+      "_date_YEAR_WEEK"
+    ];
+    for(let idSuffix of idsTranslator) {
+      if(fieldId.endsWith(idSuffix)) {
+        return fieldId.substring(0, fieldId.length - idSuffix.length);
+      }
+    }
+    return fieldId;
+  }
   
   this._processData = function (configParams, requestedFields) {
     const url = utils.getUrl(configParams);
-    let cubeResponse = cacheHelper.fetchJsonUrl(url);
+    const cubeResponse = cacheHelper.fetchJsonUrl(url);
     
-    var a = requestedFields.asArray();
-    const requestedFieldsArray = requestedFields.asArray().map(i => i.getId());
+    //var a = requestedFields.asArray();
+    const requestedFieldsArray = requestedFields.asArray().map(i => this._fixFieldId(i.getId()));
     
     const dimensions = utils.getJsonStatDimensions(cubeResponse);
     
@@ -46,7 +61,7 @@ function JsonStatDataHelper(services) {
     const keys = Object.keys(dimensions);
 
     const cubeResponseDataDimensions = cubeResponse.dimension;
-    const cubeResponseDataDimensionKeys = cubeResponse.id;
+    const cubeResponseDataDimensionKeys = cubeResponse.id || Object.keys(cubeResponse.dimension);
 
     const size = cubeResponse.size || cubeResponse.dimension.size;
     
@@ -57,12 +72,32 @@ function JsonStatDataHelper(services) {
 
     // TODO: date recoding
     const hasDates = false;
+
+    let observationsLength = 0;
+    if(!Array.isArray(observations)) {
+      observationsLength = Math.max(...Object.keys(observations).map(k => {
+        try {
+          return parseInt(k);
+        } catch(e) {
+          return null;
+        }
+      }));
+    } else {
+      observationsLength = observations.length;
+    }
     
-    for (let i = 0; i < observations.length; i++) {
+    for (let i = 0; i < observationsLength; i++) {
+      const observationKey = Array.isArray(observations) ? i : (""+i);
+      const currentObservation = observations[observationKey];
+
+      if(typeof(currentObservation) === "undefined") {
+        continue;
+      }
+
+      
       let hash = {};
-      
-      const currentObservation = observations[i];
-      
+
+
       if (!measureColumns) {
         hash['OBSERVATION'] = currentObservation;
       }
@@ -80,7 +115,7 @@ function JsonStatDataHelper(services) {
         
         const dimensionKeyName = cubeResponseDataDimensionKeys[j];
         const dimensionKeyBy = cubeResponseDataDimensions[dimensionKeyName] && cubeResponseDataDimensions[dimensionKeyName].category ?
-        cubeResponseDataDimensions[dimensionKeyName].category : null;
+          cubeResponseDataDimensions[dimensionKeyName].category : null;
 
         if(!dimensionKeyBy) {
           hash[dimensionKeyName] = '';
@@ -118,7 +153,7 @@ function JsonStatDataHelper(services) {
         }
       }
       
-      tableData.push({values: requestedFieldsArray.map(i => (hash[i] === null || typeof hash[i] !== 'undefined') ? hash[i] : '') });
+      tableData.push({values: requestedFieldsArray.map(dim => (hash[dim] === null || typeof hash[dim] !== 'undefined') ? hash[dim] : '') });
     }
     
     return tableData;

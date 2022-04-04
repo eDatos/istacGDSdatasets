@@ -12,7 +12,7 @@ function LegacyDataHelper(services) {
   this.getRows = function(configParams, requestedFields) {
     const requestedFieldsArray = requestedFields.asArray().map(i => i.getId());
     const cachedCode = cacheHelper.getHash(
-      "configParams_" + cacheHelper.getObjectHash({'params': configParams, 'fields': requestedFieldsArray})
+      "configParams_" + cacheHelper.getObjectHash({'url': utils.getUrl(configParams), 'params': configParams, 'fields': requestedFieldsArray})
     );
     let processedRows = cacheHelper.get(cachedCode);
     if (!processedRows) {
@@ -25,9 +25,24 @@ function LegacyDataHelper(services) {
     
     return processedRows;
   }
+
+  this._fixFieldId = function(fieldId) {
+    //return fieldId;
+    const idsTranslator = [
+      "_date_YEAR", "_date_YEAR_MONTH",
+      "_date_YEAR_QUARTER", "_date_YEAR_MONTH_DAY",
+      "_date_YEAR_WEEK"
+    ];
+    for(let idSuffix of idsTranslator) {
+      if(fieldId.endsWith(idSuffix)) {
+        return fieldId.substring(0, fieldId.length - idSuffix.length);
+      }
+    }
+    return fieldId;
+  }
   
   this._processData = function(configParams, requestedFields) {
-    const requestedFieldsArray = requestedFields.asArray().map(i => i.getId());
+    const requestedFieldsArray = requestedFields.asArray().map(i => this._fixFieldId(i.getId()));
   
     const url = utils.getUrl(configParams);
     const indicatorsResponse = cacheHelper.fetchJsonUrl(url);
@@ -78,7 +93,7 @@ function LegacyDataHelper(services) {
         console.log(rowByDim);
         first = false;
       }
-      tableData.push({ values: requestedFieldsArray.map(i => (rowByDim[i] === null || typeof rowByDim[i] !== 'undefined') ? rowByDim[i] : '') });
+      tableData.push({ values: requestedFieldsArray.map(dim => (rowByDim[dim] === null || typeof rowByDim[dim] !== 'undefined') ? rowByDim[dim] : '') });
     }
     
     return tableData;

@@ -74,11 +74,10 @@ function LegacySchemaHelper(services) {
           } else {
             timeCols.push({id: 'Fecha_' + k, name: 'Fecha ' + variableLabels[k], columnRole: 'dimension', dataType: 'date_' + granularity});
           }
-        } else {
-          timeCols.push({id: k, name: variableLabels[k], columnRole: 'dimension', dataType: 'string'});
-          if(configParams.showLabels) {
-            timeCols.push({id: 'Etiqueta_' + k, name: 'Etiqueta ' + variableLabels[k], columnRole: 'dimension', dataType: 'string'});
-          }
+        }
+        timeCols.push({id: k, name: variableLabels[k], columnRole: 'dimension', dataType: 'string'});
+        if(configParams.showLabels) {
+          timeCols.push({id: 'Etiqueta_' + k, name: 'Etiqueta ' + variableLabels[k], columnRole: 'dimension', dataType: 'string'});
         }
       }
       else if(spatials.indexOf(k) !== -1) {

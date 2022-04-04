@@ -14,7 +14,7 @@ function DataHelper(services) {
   this.getRows = function (configParams, requestedFields) {
     const requestedFieldsArray = requestedFields.asArray().map(i => i.getId());
     const cachedCode = cacheHelper.getHash(
-      "configParams_" + cacheHelper.getObjectHash({'params': configParams, 'fields': requestedFieldsArray})
+      "configParams_" + cacheHelper.getObjectHash({'url': utils.getUrl(configParams), 'params': configParams, 'fields': requestedFieldsArray})
     );
     let processedRows = cacheHelper.get(cachedCode);
     if (!processedRows) {
@@ -26,13 +26,28 @@ function DataHelper(services) {
     }
     return processedRows;
   }
+
+  this._fixFieldId = function(fieldId) {
+    //return fieldId;
+    const idsTranslator = [
+      "_date_YEAR", "_date_YEAR_MONTH",
+      "_date_YEAR_QUARTER", "_date_YEAR_MONTH_DAY",
+      "_date_YEAR_WEEK"
+    ];
+    for(let idSuffix of idsTranslator) {
+      if(fieldId.endsWith(idSuffix)) {
+        return fieldId.substring(0, fieldId.length - idSuffix.length);
+      }
+    }
+    return fieldId;
+  }
   
   this._processData = function (configParams, requestedFields) {
     const url = utils.getUrl(configParams);
     let cubeResponse = cacheHelper.fetchJsonUrl(url);
     
-    var a = requestedFields.asArray();
-    const requestedFieldsArray = requestedFields.asArray().map(i => i.getId());
+    //var a = requestedFields.asArray();
+    const requestedFieldsArray = requestedFields.asArray().map(i => this._fixFieldId(i.getId()));
     
     const dimensions = utils.getDimensions(cubeResponse);
     
@@ -89,7 +104,60 @@ function DataHelper(services) {
     }
     
     const hasDates = configParams.recodeDates && requestedFieldsArray.indexOf('Fecha') != -1;
-    
+    let minimumGranularity = '';
+
+    if(hasDates) {
+      // Get a data row and get date field granularity
+
+      const granularityCodes = {
+        'A': 'YEARLY',
+        'M': 'MONTHLY',
+        'Q': 'QUARTERLY',
+        'D': 'DAILY',
+        'W': 'WEEKLY',
+        'S': 'BIYEARLY'
+      };
+
+      const granularityOrder = {
+        'YEARLY': 1,
+        'BIYEARLY': 2,
+        'QUARTERLY': 3,
+        'MONTHLY': 4,
+        'WEEKLY': 5,
+        'DAILY': 6
+      };
+
+      const granularitySet = new Set();
+
+      let minimumGranularityIndex = 0;
+
+      const metadata = cubeResponse.metadata.temporalGranularities;
+      if(metadata) {
+        for(let granularityResource of metadata.resource) {
+          if(granularityCodes[granularityResource.id]) {
+            granularitySet.add(granularityCodes[granularityResource.id]);
+          }
+        }
+      } else {
+        for(let row of cubeResponse.metadata.dimensions.dimension) {
+          if(row.type == "TIME_DIMENSION") {
+            for(let dimensionValue of row.dimensionValues.value) {
+              granularitySet.add(dimensionValue.temporalGranularity);
+            }
+            break;
+          }
+        }
+      }
+
+      // TODO: comprobar valores posibles
+      for(let temporalGranularity of granularitySet) {
+        if(granularityOrder[temporalGranularity] && granularityOrder[temporalGranularity] > minimumGranularityIndex) {
+          minimumGranularityIndex = granularityOrder[temporalGranularity];
+          minimumGranularity = temporalGranularity;
+        }
+      }
+    }
+
     for (let i = 0; i < observations.length; i++) {
       let hash = {};
       
@@ -101,6 +169,8 @@ function DataHelper(services) {
       
       let remaining = i;
       let subtotal = total;
+
+      let skipRow = false;
       
       for (let j = 0; j < cubeResponseDataDimensions.total; j++) {
         const totalDimension = cubeResponseDataDimensions.dimension[j].representations.total;
@@ -123,8 +193,20 @@ function DataHelper(services) {
         }
         
         if (hasDates && timeDimension == dimensions[j].id) {
-          hash["Fecha"] = recodeDatesHelper.converDate(dimensionKeyBy.code);
+          const calculatedGranularity = recodeDatesHelper.calculateDateGranularity(dimensionKeyBy.code);
+          if(minimumGranularity == 'DAILY' && calculatedGranularity == '' ||
+            minimumGranularity == '' && calculatedGranularity == 'DAILY' ||
+            minimumGranularity == calculatedGranularity) {
+              hash["Fecha"] = recodeDatesHelper.converDate(dimensionKeyBy.code);
+          } else {
+            skipRow = true;
+            break;
+          }
         }
+      }
+
+      if(skipRow) {
+        continue;
       }
       
       if (configParams.showLabels) {
@@ -162,7 +244,7 @@ function DataHelper(services) {
         }
       }
       
-      tableData.push({values: requestedFieldsArray.map(i => (hash[i] === null || typeof hash[i] !== 'undefined') ? hash[i] : '') });
+      tableData.push({values: requestedFieldsArray.map(dim => (hash[dim] === null || typeof hash[dim] !== 'undefined') ? hash[dim] : '') });
     }
     
     if(configParams.showLabels && !dimensionMetadataKeysByValueLangsCached) {
