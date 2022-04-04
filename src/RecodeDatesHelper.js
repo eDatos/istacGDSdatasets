@@ -21,13 +21,13 @@ function RecodeDatesHelper() {
 
   const GPE_YEAR_PATTERN = "[1-2]\\d{3}";
   const GPE_YEARLY_PATTERN = GROUP_LEFT + GPE_YEAR_PATTERN + GROUP_RIGHT;
-  const GPE_BIYEARLY_PATTERN = GROUP_LEFT + GPE_YEAR_PATTERN + GROUP_RIGHT + GPE_BIYEARLY_CHARACTER + GROUP_LEFT + "[1-2]" + GROUP_RIGHT;
-  const GPE_QUARTERLY_PATTERN = GROUP_LEFT + GPE_YEAR_PATTERN + GROUP_RIGHT + GPE_QUARTERLY_CHARACTER + GROUP_LEFT + "[1-4]" + GROUP_RIGHT;
+  const GPE_BIYEARLY_PATTERN = GROUP_LEFT + GPE_YEAR_PATTERN + GROUP_RIGHT + "\\-?" + GPE_BIYEARLY_CHARACTER + GROUP_LEFT + "[1-2]" + GROUP_RIGHT;
+  const GPE_QUARTERLY_PATTERN = GROUP_LEFT + GPE_YEAR_PATTERN + GROUP_RIGHT + "\\-?" + GPE_QUARTERLY_CHARACTER + GROUP_LEFT + "[1-4]" + GROUP_RIGHT;
   const GPE_MONTH_PATTERN = "0[1-9]|1[0-2]";
-  const GPE_MONTHLY_PATTERN = GROUP_LEFT + GPE_YEAR_PATTERN + GROUP_RIGHT + GPE_MONTHLY_CHARACTER + GROUP_LEFT + GPE_MONTH_PATTERN + GROUP_RIGHT;
-  const GPE_WEEKLY_PATTERN = GROUP_LEFT + GPE_YEAR_PATTERN + GROUP_RIGHT + GPE_WEEKLY_CHARACTER + GROUP_LEFT + "0[1-9]|[1-4][0-9]|5[0-3]" + GROUP_RIGHT
-  const GPE_DAILY_PATTERN = GROUP_LEFT + GPE_YEAR_PATTERN + GROUP_RIGHT + GROUP_LEFT + GPE_MONTH_PATTERN + GROUP_RIGHT + GROUP_LEFT
-    + "0[1-9]|[1-2][0-9]|3[0-1]" + GROUP_RIGHT;
+  const GPE_MONTHLY_PATTERN = GROUP_LEFT + GPE_YEAR_PATTERN + GROUP_RIGHT + "\\-?" + GPE_MONTHLY_CHARACTER + GROUP_LEFT + GPE_MONTH_PATTERN + GROUP_RIGHT;
+  const GPE_WEEKLY_PATTERN = GROUP_LEFT + GPE_YEAR_PATTERN + GROUP_RIGHT + "\\-?" + GPE_WEEKLY_CHARACTER + GROUP_LEFT + "0[1-9]|[1-4][0-9]|5[0-3]" + GROUP_RIGHT
+  const GPE_DAILY_PATTERN = GROUP_LEFT + GPE_YEAR_PATTERN + GROUP_RIGHT + "\\-?" + GROUP_LEFT + GPE_MONTH_PATTERN + GROUP_RIGHT + GROUP_LEFT
+                                              + "0[1-9]|[1-2][0-9]|3[0-1]" + GROUP_RIGHT;
 
   // SDMX
   const REPORTING_YEAR_PERIOD_INDICATOR = "A";
@@ -115,40 +115,72 @@ function RecodeDatesHelper() {
   // 2000-D353
   const _calculateReportingPeriod = function (time) {
     if (time.match(new RegExp(PATTERN_REPORTING_YEAR_TYPE))) {
-      return time.match(new RegExp(PATTERN_REPORTING_YEAR_TYPE))[1] + "0101";
+      //return time.match(new RegExp(PATTERN_REPORTING_YEAR_TYPE))[1] + "0101";
+      return time.match(new RegExp(PATTERN_REPORTING_YEAR_TYPE))[1];
     }
     if (time.match(new RegExp(PATTERN_REPORTING_SEMESTER_TYPE))) {
       const year = time.match(new RegExp(PATTERN_REPORTING_SEMESTER_TYPE))[1];
       const month = (time.match(new RegExp(PATTERN_REPORTING_SEMESTER_TYPE))[3] - 1) * 6;
-      return year + (month + 1) + "01";
+      return year + (month + 1);
     }
     if (time.match(new RegExp(PATTERN_REPORTING_TRIMESTER_TYPE))) {
       const year = time.match(new RegExp(PATTERN_REPORTING_TRIMESTER_TYPE))[1];
       const month = (time.match(new RegExp(PATTERN_REPORTING_TRIMESTER_TYPE))[3] - 1) * 4;
-      return year + (month + 1) + "01";
+      return year + (month + 1);
     }
     if (time.match(new RegExp(PATTERN_REPORTING_QUARTER_TYPE))) {
       const year = time.match(new RegExp(PATTERN_REPORTING_QUARTER_TYPE))[1];
-      const month = (time.match(new RegExp(PATTERN_REPORTING_QUARTER_TYPE))[3] - 1) * 3;
-      return year + (month + 1) + "01";
+      //const month = (time.match(new RegExp(PATTERN_REPORTING_QUARTER_TYPE))[3] - 1) * 3;
+      //return year + (month + 1) + "01";
+      const quarter = time.match(new RegExp(PATTERN_REPORTING_QUARTER_TYPE))[3];
+      return year + quarter;
     }
     if (time.match(new RegExp(PATTERN_REPORTING_MONTH_TYPE))) {
       const year = time.match(new RegExp(PATTERN_REPORTING_MONTH_TYPE))[1];
-      const month = time.match(new RegExp(PATTERN_REPORTING_MONTH_TYPE))[3];
-      return year + month + "01";
+      const month = parseInt(time.match(new RegExp(PATTERN_REPORTING_MONTH_TYPE))[3]);
+      return year + strPad("" + month, 2, "0");
+      //return year + month + "01";
     }
     if (time.match(new RegExp(PATTERN_REPORTING_WEEK_TYPE))) {
       const year = time.match(new RegExp(PATTERN_REPORTING_WEEK_TYPE))[1];
-      const day = (time.match(new RegExp(PATTERN_REPORTING_WEEK_TYPE))[3] - 1) * 7;
-      const date = new Date(year, "", day + 1);
-      return year + (date.getMonth() + 1) + date.getDate();
+      //const day = (time.match(new RegExp(PATTERN_REPORTING_WEEK_TYPE))[3] - 1) * 7;
+      //const date = new Date(year, "", day + 1);
+      //return year + (date.getMonth() + 1) + date.getDate();
+      const week = parseInt(time.match(new RegExp(PATTERN_REPORTING_WEEK_TYPE))[3]);
+      return year + strPad("" + week, 2, "0");
     }
     if (time.match(new RegExp(PATTERN_REPORTING_DAY_TYPE))) {
       const year = time.match(new RegExp(PATTERN_REPORTING_DAY_TYPE))[1];
       const day = time.match(new RegExp(PATTERN_REPORTING_DAY_TYPE))[3];
       const date = new Date(year, "", day);
-      return year + (date.getMonth() + 1) + date.getDate();
+      return year + strPad("" + (date.getMonth() + 1), 2, "0") + strPad("" + date.getDate(), 2, "0");
     }
+    return time;
+  }
+
+  const _calculateReportingPeriodGranularity = function (time) {
+    if (time.match(new RegExp(PATTERN_REPORTING_YEAR_TYPE))) {
+      return "YEARLY";
+    }
+    if (time.match(new RegExp(PATTERN_REPORTING_SEMESTER_TYPE))) {
+      return "BIYEARLY";
+    }
+    if (time.match(new RegExp(PATTERN_REPORTING_TRIMESTER_TYPE))) {
+      return "FOUR_MONTHLY";
+    }
+    if (time.match(new RegExp(PATTERN_REPORTING_QUARTER_TYPE))) {
+      return "QUARTERLY";
+    }
+    if (time.match(new RegExp(PATTERN_REPORTING_MONTH_TYPE))) {
+      return "MONTHLY";
+    }
+    if (time.match(new RegExp(PATTERN_REPORTING_WEEK_TYPE))) {
+      return "WEEKLY";
+    }
+    if (time.match(new RegExp(PATTERN_REPORTING_DAY_TYPE))) {
+      return "DAILY";
+    }
+    return "";
   }
 
   // DATETIME
@@ -189,57 +221,96 @@ function RecodeDatesHelper() {
     } else if (_isGregorianTimePeriod(time)) {
       date = _calculateGregorianTimePeriod(time);
     }
-    return date;
+    return date === null ? time : date;
+  }
+
+  const _calculateDateGranularity = function (time) {
+    if (_isTimeRange(time)) {
+      return "";
+    } else if (_isReportingTimePeriod(time)) {
+      return _calculateReportingPeriodGranularity(time);
+    } else if (_isDateTime(time)) {
+      return "";
+    } else if (_isGregorianTimePeriod(time)) {
+      return "";
+    }
+    return "";
   }
 
   const _recodeDates = function (date, granularity) {
     switch (granularity) {
+      // anual
       case "YEARLY": {
         if (date.match(new RegExp(START + GPE_YEARLY_PATTERN + END))) {
-          return date + "0101";
+          //return date + "0101";
+          return date;
         }
         break;
       }
+      // semestral
       case "BIYEARLY": {
+        // TODO: no existe este rango de fecha en GDS, devolver dato mensual en enero y junio
         if (date.match(new RegExp(START + GPE_BIYEARLY_PATTERN + END))) {
           const year = date.match(new RegExp(START + GPE_BIYEARLY_PATTERN + END))[1];
           const month = (date.match(new RegExp(START + GPE_BIYEARLY_PATTERN + END))[2] - 1) * 6;
-          return year + strPad("" + (month + 1), 2, "0") + "01";
+          //return year + strPad("" + (month + 1), 2, "0") + "01";
+          return year + strPad("" + (month + 1), 2, "0");
         }
         break;
       }
+      // trimestral
       case "QUARTERLY": {
         if (date.match(new RegExp(START + GPE_QUARTERLY_PATTERN + END))) {
           const year = date.match(new RegExp(START + GPE_QUARTERLY_PATTERN + END))[1];
-          const month = (date.match(new RegExp(START + GPE_QUARTERLY_PATTERN + END))[2] - 1) * 3;
-          return year + strPad("" + (month + 1), 2, "0") + "01";
+          // const month = (date.match(new RegExp(START + GPE_QUARTERLY_PATTERN + END))[2] - 1) * 3;
+          // return year + strPad("" + (month + 1), 2, "0") + "01";
+          const quarter = date.match(new RegExp(START + GPE_QUARTERLY_PATTERN + END))[2];
+          return year + quarter;
         }
         break;
       }
+      // cuatrimestral
+      case "FOUR_MONTHLY": {
+        // TODO: no existe este rango de fecha en GDS, devolver dato mensual en enero, marzo, junio y septiembre
+        if (date.match(new RegExp(START + GPE_BIYEARLY_PATTERN + END))) {
+          const year = date.match(new RegExp(START + GPE_BIYEARLY_PATTERN + END))[1];
+          const month = (date.match(new RegExp(START + GPE_BIYEARLY_PATTERN + END))[2] - 1) * 3;
+          //return year + strPad("" + (month + 1), 2, "0") + "01";
+          return year + strPad("" + (month + 1), 2, "0");
+        }
+        break;
+      }
+      // mensual
       case "MONTHLY": {
         if (date.match(new RegExp(START + GPE_MONTHLY_PATTERN + END))) {
           const year = date.match(new RegExp(START + GPE_MONTHLY_PATTERN + END))[1];
-          const month = date.match(new RegExp(START + GPE_MONTHLY_PATTERN + END))[2];
-          return year + strPad("" + (month), 2, "0") + "01";
+          const month = parseInt(date.match(new RegExp(START + GPE_MONTHLY_PATTERN + END))[2]);
+          //return year + strPad("" + (month), 2, "0") + "01";
+          return year + strPad("" + month, 2, "0");
         }
         break;
       }
+      // semanal
       case "WEEKLY": {
         if (date.match(new RegExp(START + GPE_WEEKLY_PATTERN + END))) {
+          // const year = date.match(new RegExp(START + GPE_WEEKLY_PATTERN + END))[1];
+          // const day =
+          //   (date.match(new RegExp(START + GPE_WEEKLY_PATTERN + END))[2] - 1) * 7;
+          // date = new Date(year, "", day + 1);
+          // return year + strPad("" + (date.getMonth()), 2, "0") + date.getDate();
           const year = date.match(new RegExp(START + GPE_WEEKLY_PATTERN + END))[1];
-          const day =
-            (date.match(new RegExp(START + GPE_WEEKLY_PATTERN + END))[2] - 1) * 7;
-          date = new Date(year, "", day + 1);
-          return year + strPad("" + (date.getMonth()), 2, "0") + date.getDate();
+          const week = parseInt(date.match(new RegExp(START + GPE_WEEKLY_PATTERN + END))[2]);
+          return year + strPad("" + week, 2, "0");
         }
         break;
       }
+      // diario
       case "DAILY": {
         if (date.match(new RegExp(START + GPE_DAILY_PATTERN + END))) {
           const year = date.match(new RegExp(START + GPE_DAILY_PATTERN + END))[1];
           const month = date.match(new RegExp(START + GPE_DAILY_PATTERN + END))[2];
           const day = date.match(new RegExp(START + GPE_DAILY_PATTERN + END))[3];
-          return year + strPad("" + (month), 2, "0") + day;
+          return year + strPad("" + (month), 2, "0") + strPad("" + (day), 2, "0");
         }
         break;
       }
@@ -256,6 +327,10 @@ function RecodeDatesHelper() {
    */
   this.converDate = function (date, granularity) {
     return _recodeDates(date, granularity);
+  }
+
+  this.calculateDateGranularity = function(date) {
+    return _calculateDateGranularity(date);
   }
 }
 
