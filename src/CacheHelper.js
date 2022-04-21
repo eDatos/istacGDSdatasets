@@ -116,12 +116,14 @@ function CacheHelper(cacheService, utils, urlFetchApp, utilities) {
         response = response.getContentText();
         response = JSON.parse(response);
       } catch (e) {
-        let strError = JSON.stringify(e);
+        let strError = JSON.stringify(e) + e.stack;
         let error = "";
         if (strError.indexOf("timeout") > 0) {
           error = "Se ha producido un timeout consultando la API, inténtelo más tarde";
         } else if(strError.indexOf("not_found") > 0) {
           error = "El dataset seleccionado no existe. Pruebe con otro.";
+        } else if(strError.indexOf("SyntaxError") > 0) {
+          error = "La URL indicada ha devuelto datos en formato inválido, sólo se aceptan respuestas en formato JSON.";
         } else {
           error = "Error mientras se obtienen los datos de la API";
         }
