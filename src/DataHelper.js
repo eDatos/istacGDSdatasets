@@ -105,6 +105,7 @@ function DataHelper(services) {
     
     const hasDates = configParams.recodeDates && requestedFieldsArray.indexOf('Fecha') != -1;
     let minimumGranularity = '';
+    let dimensionGranularities = {};
 
     if(hasDates) {
       // Get a data row and get date field granularity
@@ -149,6 +150,19 @@ function DataHelper(services) {
         }
       }
 
+      if(cubeResponse.metadata && cubeResponse.metadata.dimensions && cubeResponse.metadata.dimensions.dimension) {
+        for(let row of cubeResponse.metadata.dimensions.dimension) {
+          if(row.type == "TIME_DIMENSION") {
+            for(let dimensionValue of row.dimensionValues.value) {
+              // comprueba que la granularidad es conocida
+              if(granularityOrder[dimensionValue.temporalGranularity]) {
+                dimensionGranularities[dimensionValue.id] = dimensionValue.temporalGranularity;
+              }
+            }
+          }
+        }
+      }
+
       // TODO: comprobar valores posibles
       for(let temporalGranularity of granularitySet) {
         if(granularityOrder[temporalGranularity] && granularityOrder[temporalGranularity] > minimumGranularityIndex) {
@@ -157,6 +171,8 @@ function DataHelper(services) {
         }
       }
     }
+
+
 
     for (let i = 0; i < observations.length; i++) {
       let hash = {};
@@ -193,7 +209,7 @@ function DataHelper(services) {
         }
         
         if (hasDates && timeDimension == dimensions[j].id) {
-          const calculatedGranularity = recodeDatesHelper.calculateDateGranularity(dimensionKeyBy.code);
+          const calculatedGranularity = dimensionGranularities[dimensionKeyBy.code] ? dimensionGranularities[dimensionKeyBy.code] : recodeDatesHelper.calculateDateGranularity(dimensionKeyBy.code);
           if(minimumGranularity == 'DAILY' && calculatedGranularity == '' ||
             minimumGranularity == '' && calculatedGranularity == 'DAILY' ||
             minimumGranularity == calculatedGranularity) {

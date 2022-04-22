@@ -37,7 +37,13 @@ function Utils() {
         finalUrl = configParams.inputUrl;
         break;
     }
-    return encodeURI(finalUrl);
+    let decodedUrl = finalUrl;
+    do {
+      finalUrl = decodedUrl;
+      decodedUrl = decodeURI(finalUrl);
+    } while(finalUrl != decodedUrl);
+    finalUrl = encodeURI(decodedUrl);
+    return finalUrl;
   }
   
   this.getMeasureColumns = function(response) {
