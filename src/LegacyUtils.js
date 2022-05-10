@@ -1,22 +1,34 @@
-
-const dateGranularityRegex = {
-  "YEARLY": [/^([0-9]{4})$/im, "$1"],
-  "MONTHLY": [/^([0-9]{4})M([0-9]{2})$/im, "$1$2"],
-  "QUARTERLY": [/^([0-9]{4})Q([0-9])$/im, "$1$2"],
-  "BIYEARLY": [/^([0-9]{4})H([0-9])$/im, null, date => date.substring(0, 4) + "0" + (parseInt(date.substring(5, 1))*6)],
-  "DAILY": [/^([0-9]{6})$/im, "$1"], // TODO: translate to YEAR_MONTH_DAY
-  "WEEKLY": [/^([0-9]{4})W([0-9]{2})$/im, "$1$2"]
-};
-
-const placeGranularityRegex = {
-  "COUNTRY": [/^([A-Z]{2})$/im], //TODO: confirmar
-  "REGIONS": [/^([A-Z]{2}[0-9]{2})$/im],
-  "PROVINCES": [/^([A-Z]{2}[0-9]{3})$/im],
-  "COUNTIES": [/^([A-Z]{2}[0-9]{3}[A-Z][0-9]{2})$/im],
-  "MUNICIPALITIES": [/^([0-9]{5})$/im]
-};
-
 function LegacyUtils() {
+
+  const strPad = function (input, padLength, padString = ' ') {
+    while (input.length < padLength) {
+      input = padString + input;
+    }
+    return input;
+  };
+
+  const dateGranularityRegex = {
+    "YEARLY": [/^([0-9]{4})$/im, "$10101"],
+    "MONTHLY": [/^([0-9]{4})M([0-9]{2})$/im, "$1$201"],
+    //"QUARTERLY": [/^([0-9]{4})Q([0-9])$/im, "$1$2"],
+    "QUARTERLY": [/^([0-9]{4})Q([0-9])$/im, null, date => date.substring(0, 4) + strPad(""+((parseInt(date.substring(5, 1))-1)*3 +1), 2, "0") + "01"],
+    "BIYEARLY": [/^([0-9]{4})H([0-9])$/im, null, date => date.substring(0, 4) + strPad(""+(parseInt(date.substring(5, 1))*6), 2, "0") + "01"],
+    "DAILY": [/^([0-9]{6})$/im, "$1"], // TODO: translate to YEAR_MONTH_DAY
+    "WEEKLY": [/^([0-9]{4})W([0-9]{2})$/im, null, date => {
+      const year = date.substring(0, 4);
+      const day = parseInt(date.substring(5, 2))*7;
+      const parsed = new Date(year, "", day + 1);
+      return year + strPad("" + (date.getMonth()), 2, "0") + strPad(""+date.getDate(), 2, "0");
+    }],
+  };
+
+  const placeGranularityRegex = {
+    "COUNTRY": [/^([A-Z]{2})$/im], //TODO: confirmar
+    "REGIONS": [/^([A-Z]{2}[0-9]{2})$/im],
+    "PROVINCES": [/^([A-Z]{2}[0-9]{3})$/im],
+    "COUNTIES": [/^([A-Z]{2}[0-9]{3}[A-Z][0-9]{2})$/im],
+    "MUNICIPALITIES": [/^([0-9]{5})$/im]
+  };
 
   this.normalize = function(id) {
     return id.replace(/[^a-zA-Z0-9]/gi, '_');
