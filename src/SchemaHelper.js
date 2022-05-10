@@ -124,44 +124,50 @@ function SchemaHelper(services) {
         dataType: "date"
       };
 
-      const granularitySet = new Set();
+      // const granularitySet = new Set();
 
-      let minimumGranularityIndex = 0;
-      let minimumGranularity = '';
+      // let minimumGranularityIndex = 0;
+      // let minimumGranularity = '';
 
-      const metadata = cubeResponse.metadata.temporalGranularities;
-      if(metadata) {
-        for(let granularityResource of metadata.resource) {
-          if(granularityCodes[granularityResource.id]) {
-            granularitySet.add(granularityCodes[granularityResource.id]);
-          }
-        }
-      } else {
-        for(let row of cubeResponse.metadata.dimensions.dimension) {
-          if(row.type == "TIME_DIMENSION") {
-            for(let dimensionValue of row.dimensionValues.value) {
-              granularitySet.add(dimensionValue.temporalGranularity);
-            }
-            break;
-          }
-        }
-      }
+      // const metadata = cubeResponse.metadata.temporalGranularities;
+      // if(metadata) {
+      //   for(let granularityResource of metadata.resource) {
+      //     if(granularityCodes[granularityResource.id]) {
+      //       granularitySet.add(granularityCodes[granularityResource.id]);
+      //     }
+      //   }
+      // } else {
+      //   for(let row of cubeResponse.metadata.dimensions.dimension) {
+      //     if(row.type == "TIME_DIMENSION") {
+      //       for(let dimensionValue of row.dimensionValues.value) {
+      //         granularitySet.add(dimensionValue.temporalGranularity);
+      //       }
+      //       break;
+      //     }
+      //   }
+      // }
 
-      // TODO: comprobar valores posibles
-      for(let temporalGranularity of granularitySet) {
-        if(granularityOrder[temporalGranularity] && granularityOrder[temporalGranularity] > minimumGranularityIndex) {
-          minimumGranularityIndex = granularityOrder[temporalGranularity];
-          minimumGranularity = temporalGranularity;
-        }
-      }
+      // // TODO: comprobar valores posibles
+      // for(let temporalGranularity of granularitySet) {
+      //   if(granularityOrder[temporalGranularity] && granularityOrder[temporalGranularity] > minimumGranularityIndex) {
+      //     minimumGranularityIndex = granularityOrder[temporalGranularity];
+      //     minimumGranularity = temporalGranularity;
+      //   }
+      // }
 
-      if(minimumGranularityIndex == 0 || minimumGranularity == '') {
-        dateCol.dataType = "date";
-      } else {
-        dateCol.dataType = "date_" + minimumGranularity;
-      }
+      // if(minimumGranularityIndex == 0 || minimumGranularity == '') {
+      //   dateCol.dataType = "date";
+      // } else {
+      //   dateCol.dataType = "date_" + minimumGranularity;
+      // }
 
       result.push(dateCol);
+      result.push({
+        id: "Granularidad_Fecha",
+        name: "Granularidad Fecha",
+        columnRole: "dimension",
+        dataType: "string"
+      });
     }
     
     return result;

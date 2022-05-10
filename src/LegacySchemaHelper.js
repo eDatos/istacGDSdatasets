@@ -64,16 +64,17 @@ function LegacySchemaHelper(services) {
         }
         if(configParams.recodeDates) {
           // Get a data row and get date field granularity
-          const row = indicatorsResponse.data[0];
-          let granularity = null;
-          if(row) {
-            granularity = utils.getDateGranularity(row.dimCodes[variables.indexOf(k)]);
-          }
-          if(granularity === null) {
-            timeCols.push({id: 'Fecha_' + k, name: 'Fecha ' + variableLabels[k], columnRole: 'dimension', dataType: 'date'});
-          } else {
-            timeCols.push({id: 'Fecha_' + k, name: 'Fecha ' + variableLabels[k], columnRole: 'dimension', dataType: 'date_' + granularity});
-          }
+          // const row = indicatorsResponse.data[0];
+          // let granularity = null;
+          // if(row) {
+          //   granularity = utils.getDateGranularity(row.dimCodes[variables.indexOf(k)]);
+          // }
+          // if(granularity === null) {
+          //   timeCols.push({id: 'Fecha_' + k, name: 'Fecha ' + variableLabels[k], columnRole: 'dimension', dataType: 'date'});
+          // } else {
+          //   timeCols.push({id: 'Fecha_' + k, name: 'Fecha ' + variableLabels[k], columnRole: 'dimension', dataType: 'date_' + granularity});
+          // }
+          timeCols.push({id: 'Fecha_' + k, name: 'Fecha ' + variableLabels[k], columnRole: 'dimension', dataType: 'date'});
         }
         timeCols.push({id: k, name: variableLabels[k], columnRole: 'dimension', dataType: 'string'});
         if(configParams.showLabels) {

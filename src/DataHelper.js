@@ -103,7 +103,8 @@ function DataHelper(services) {
       dimensionMetadataKeysByValueLangsCached = true;
     }
     
-    const hasDates = configParams.recodeDates && requestedFieldsArray.indexOf('Fecha') != -1;
+    const hasDates = configParams.recodeDates &&
+      (requestedFieldsArray.indexOf('Fecha') != -1 || requestedFieldsArray.indexOf('Granularidad_Fecha') != -1);
     let minimumGranularity = '';
     let dimensionGranularities = {};
 
@@ -210,14 +211,16 @@ function DataHelper(services) {
         
         if (hasDates && timeDimension == dimensions[j].id) {
           const calculatedGranularity = dimensionGranularities[dimensionKeyBy.code] ? dimensionGranularities[dimensionKeyBy.code] : recodeDatesHelper.calculateDateGranularity(dimensionKeyBy.code);
-          if(minimumGranularity == 'DAILY' && calculatedGranularity == '' ||
-            minimumGranularity == '' && calculatedGranularity == 'DAILY' ||
-            minimumGranularity == calculatedGranularity) {
-              hash["Fecha"] = recodeDatesHelper.converDate(dimensionKeyBy.code);
-          } else {
-            skipRow = true;
-            break;
-          }
+          // if(minimumGranularity == 'DAILY' && calculatedGranularity == '' ||
+          //   minimumGranularity == '' && calculatedGranularity == 'DAILY' ||
+          //   minimumGranularity == calculatedGranularity) {
+          //     hash["Fecha"] = recodeDatesHelper.converDate(dimensionKeyBy.code);
+          // } else {
+          //   skipRow = true;
+          //   break;
+          // }
+          hash["Fecha"] = recodeDatesHelper.converDate(dimensionKeyBy.code);
+          hash["Granularidad_Fecha"] = calculatedGranularity;
         }
       }
 
