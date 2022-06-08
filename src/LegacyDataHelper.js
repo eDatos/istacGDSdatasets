@@ -90,7 +90,7 @@ function LegacyDataHelper(services) {
       }
       rowByDim['Valor'] = row.Valor;
       if(first) {
-        console.log(rowByDim);
+        //console.log(rowByDim);
         first = false;
       }
       tableData.push({ values: requestedFieldsArray.map(dim => (rowByDim[dim] === null || typeof rowByDim[dim] !== 'undefined') ? rowByDim[dim] : '') });

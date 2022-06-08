@@ -1,4 +1,4 @@
-const cacheVersion = "20220510_1101";
+const cacheVersion = "20220608_1424";
 
 /**
  * Builds the Cache Helper  object.

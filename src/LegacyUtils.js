@@ -9,10 +9,10 @@ function LegacyUtils() {
 
   const dateGranularityRegex = {
     "YEARLY": [/^([0-9]{4})$/im, "$10101"],
-    "MONTHLY": [/^([0-9]{4})M([0-9]{2})$/im, "$1$201"],
+    "MONTHLY": [/^([0-9]{4})-?M([0-9]{2})$/im, "$1$201"],
     //"QUARTERLY": [/^([0-9]{4})Q([0-9])$/im, "$1$2"],
-    "QUARTERLY": [/^([0-9]{4})Q([0-9])$/im, null, date => date.substring(0, 4) + strPad(""+((parseInt(date.substring(5, 1))-1)*3 +1), 2, "0") + "01"],
-    "BIYEARLY": [/^([0-9]{4})H([0-9])$/im, null, date => date.substring(0, 4) + strPad(""+(parseInt(date.substring(5, 1))*6), 2, "0") + "01"],
+    "QUARTERLY": [/^([0-9]{4})-?Q([0-4])$/im, null, date => date.substring(0, 4) + strPad(""+(((parseInt(date.substring(date.length-1))-1)*3) +1), 2, "0") + "01"],
+    "BIYEARLY": [/^([0-9]{4})-?H([0-9])$/im, null, date => date.substring(0, 4) + strPad(""+(parseInt(date.substring(date.length-1))*6), 2, "0") + "01"],
     "DAILY": [/^([0-9]{6})$/im, "$1"], // TODO: translate to YEAR_MONTH_DAY
     "WEEKLY": [/^([0-9]{4})W([0-9]{2})$/im, null, date => {
       const year = date.substring(0, 4);
