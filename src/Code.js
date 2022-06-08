@@ -12,7 +12,7 @@ if (typeof require !== "undefined") {
 function getConnector() {
   const utils = new Utils();
   const legacyUtils = new LegacyUtils();
-  const recodeDatesHelper = new RecodeDatesHelper();
+  const recodeDatesHelper = new RecodeDatesHelper(utils);
   const urlFetchApp = UrlFetchApp;
   return new Connector({
     Utils: utils,

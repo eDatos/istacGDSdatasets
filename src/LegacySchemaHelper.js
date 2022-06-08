@@ -105,7 +105,7 @@ function LegacySchemaHelper(services) {
       mainCols.push(column);
     }
     
-    console.log(mainCols);
+    //console.log(mainCols);
     
     return mainCols;
   }
