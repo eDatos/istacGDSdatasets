@@ -184,7 +184,7 @@ function Utils() {
   
   /* istanbul ignore next */
   this.throwConectorError = function(exception, message) {
-     DataStudioApp.createCommunityConnector()
+    DataStudioApp.createCommunityConnector()
        .newUserError()
        .setDebugText("Error while fetching data from API. Exception details: " + exception.stack)
        .setText(message)
@@ -192,14 +192,16 @@ function Utils() {
   }
 
   this.weekToDate = function(y, w) {
-      var simple = new Date(y, 0, 1 + (w - 1) * 7 - 1);
-      var dow = simple.getDay();
-      var ISOweekStart = simple;
-      if (dow <= 4)
-          ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);
-      else
-          ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
-      return ISOweekStart;
+    let simple = new Date(y, 0, 1 + (w - 1) * 7);
+    let dow = simple.getDay();
+    let ISOweekStart = simple;
+    if (dow <= 4) {
+      ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);
+    } else {
+      ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
+    }
+    ISOweekStart.setHours(12);
+    return ISOweekStart;
   }
 }
 
