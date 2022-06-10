@@ -169,7 +169,7 @@ function RecodeDatesHelper(utils) {
       const year = time.match(new RegExp(PATTERN_REPORTING_WEEK_TYPE))[1];
       const week = time.match(new RegExp(PATTERN_REPORTING_WEEK_TYPE))[3];
       const date = utils.weekToDate(year, week);
-      return year + strPad(""+(date.getMonth() + 1), 2, "0") + strPad(""+date.getDate(), 2, "0");
+      return "" + date.getFullYear() + strPad(""+(date.getMonth() + 1), 2, "0") + strPad(""+date.getDate(), 2, "0");
       // const week = parseInt(time.match(new RegExp(PATTERN_REPORTING_WEEK_TYPE))[3]);
       // return year + strPad("" + week, 2, "0");
     }
@@ -177,7 +177,7 @@ function RecodeDatesHelper(utils) {
       const year = time.match(new RegExp(PATTERN_REPORTING_DAY_TYPE))[1];
       const day = time.match(new RegExp(PATTERN_REPORTING_DAY_TYPE))[3];
       const date = new Date(year, "", day);
-      return year + strPad("" + (date.getMonth() + 1), 2, "0") + strPad("" + date.getDate(), 2, "0");
+      return "" + date.getFullYear() + strPad("" + (date.getMonth() + 1), 2, "0") + strPad("" + date.getDate(), 2, "0");
     }
     return time;
   }
@@ -235,7 +235,7 @@ function RecodeDatesHelper(utils) {
       const year = time.match(new RegExp(START + GPE_WEEKLY_PATTERN + END))[1];
       const week = time.match(new RegExp(START + GPE_WEEKLY_PATTERN + END))[2];
       const date = utils.weekToDate(year, week);
-      return year + strPad("" + (date.getMonth()), 2, "0") + strPad(""+date.getDate(), 2, "0");
+      return "" + date.getFullYear() + strPad("" + (date.getMonth()), 2, "0") + strPad(""+date.getDate(), 2, "0");
       // const year = time.match(new RegExp(START + GPE_WEEKLY_PATTERN + END))[1];
       // const week = parseInt(time.match(new RegExp(START + GPE_WEEKLY_PATTERN + END))[2]);
       // return year + strPad("" + week, 2, "0");
@@ -392,7 +392,7 @@ function RecodeDatesHelper(utils) {
           const year = date.match(new RegExp(START + GPE_WEEKLY_PATTERN + END))[1];
           const week = date.match(new RegExp(START + GPE_WEEKLY_PATTERN + END))[2];
           const date = utils.weekToDate(year, week);
-          return year + strPad("" + (date.getMonth()), 2, "0") + strPad(""+date.getDate(), 2, "0");
+          return "" + date.getFullYear() + strPad("" + (date.getMonth()), 2, "0") + strPad(""+date.getDate(), 2, "0");
           // const year = date.match(new RegExp(START + GPE_WEEKLY_PATTERN + END))[1];
           // const week = parseInt(date.match(new RegExp(START + GPE_WEEKLY_PATTERN + END))[2]);
           // return year + strPad("" + week, 2, "0");
